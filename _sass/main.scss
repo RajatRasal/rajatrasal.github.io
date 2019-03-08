@@ -1,3 +1,17 @@
+@font-face {
+  font-amily: "Calendus-Plus";
+  src: url("../fonts/Calendus-Plus.tff") format("opentype");
+}
+
+@font-face {
+  font-family: "Chicago";
+  src: url("../fonts/Chicago.tff") format("opentype");
+}
+
+.title {
+  font-family: Calendus-Plus;
+}
+
 .current {
   color: green;
 }
