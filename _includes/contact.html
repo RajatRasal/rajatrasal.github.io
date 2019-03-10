@@ -1,18 +1,22 @@
 <div>
-  <a class="cv-ic">
-    <i class="far fa-file-alt fa-2x"></i>
-  </a>
+  {% for image in site.static_files %}
+    {% if image.name contains 'rajat_cv' %}
+    <a href="{{ image.path }}" class="cv-ic">
+      <i class="far fa-file-alt fa-2x"></i>
+    </a>
+    {% endif %}
+  {% endfor %}
 </div>
 <div>
-  <a class="fb-ic">
+  <a href="https://www.facebook.com/rajat.rasal.52" class="fb-ic">
     <i class="fab fa-facebook-square"></i>
   </a>
   &nbsp;
-  <a class="github-ic">
+  <a href="https://github.com/RajatRasal" class="github-ic">
     <i class="fab fa-github"></i>
   </a>
   &nbsp;
-  <a class="linkedin-ic">
+  <a href="://www.linkedin.com/in/rajat-rasal-97539290/" class="linkedin-ic">
     <i class="fab fa-linkedin"></i>
   </a>
 </div>
