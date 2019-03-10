@@ -1,3 +1,36 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 12px;
+}
+
+@media (max-width: 1024px) { 
+  .container {
+    max-width: 38rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10;
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+header .masthead {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+
 .title {
   font-family: 'Raleway', sans-serif;
   color: red;
