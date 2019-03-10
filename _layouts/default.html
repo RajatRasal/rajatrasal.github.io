@@ -6,8 +6,13 @@
     {% include style.html %}
   </head>
   <body>
-    {% include navigation.html %}
-    {{ content }}
-    {% include script.html %}
+    <div class="container content">
+      <header class="masthead">
+        {% include title.html %}
+        {% include navigation.html %}
+      </header>
+      {{ content }}
+      {% include script.html %}
+    </div>
   </body>
 </html>
