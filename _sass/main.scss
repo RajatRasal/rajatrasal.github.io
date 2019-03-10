@@ -17,6 +17,7 @@ html, body {
   color: $primary-color;
   font-family: $body-font-stack;
   display: block;
+  height: 100%;
 }
 
 .container {
@@ -84,5 +85,33 @@ h3 {
 
 nav small {
   font-weight: lighter;
+  opacity: .5;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.footer {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  bottom: 0;
+}
+
+.footer div {
+  margin-top: .25rem; 
+}
+
+.footer .far, .footer .fab {
   opacity: .5;
 }
