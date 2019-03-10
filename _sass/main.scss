@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700');
 
 $primary-color: #303030;
 $secondary-color: #9a9a9a;
-$header-font-stack: 'Raleway', sans-serif;
-$body-font-stack: 'Open Sans', 'sans-serif';
+$title-font: 'Space Mono', monospace;
+$header-font-stack: 'Nunito', sans-serif;
+$body-font-stack: 'Raleway', 'Robotos', 'sans-serif';
 
 * {
   -webkit-box-sizing: border-box;
@@ -15,7 +16,8 @@ html, body {
   margin: 0;
   padding: 12px;
   color: $primary-color;
-  font-family: $body-font-stack;
+  font-family: $body-font-stack !important;
+  font-weight: lighter;
   display: block;
   height: 100%;
 }
@@ -30,7 +32,7 @@ html, body {
 
 @media (min-width: 38em) {
   html {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -68,6 +70,11 @@ a:hover, a:focus {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-stack;
+}
+
+.masthead-title {
+  font-size: 2rem;
+  font-family: $title-font;
 }
 
 .masthead-title a {

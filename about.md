@@ -2,5 +2,5 @@
 layout: default
 title: About
 ---
-# About Page
+## **About**
 This page tells you a little more about me.
