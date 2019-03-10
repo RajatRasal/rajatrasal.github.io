@@ -1,17 +1,8 @@
-@font-face {
-  font-amily: "Calendus-Plus";
-  src: url("../fonts/Calendus-Plus.tff") format("opentype");
-}
-
-@font-face {
-  font-family: "Chicago";
-  src: url("../fonts/Chicago.tff") format("opentype");
-}
-
 .title {
-  font-family: Calendus-Plus;
+  font-family: 'Raleway', sans-serif;
+  color: red;
 }
 
 .current {
-  color: green;
+  color: yellow;
 }
