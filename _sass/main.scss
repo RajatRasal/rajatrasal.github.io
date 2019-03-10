@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+
 $primary-color: #303030;
 $secondary-color: #9a9a9a;
-$header-font-stack: 'Spectral', serif;
-$body-font-stack: 'Raleway', sans-serif;
+$header-font-stack: 'Raleway', sans-serif;
+$body-font-stack: 'Open Sans', 'sans-serif';
 
 * {
   -webkit-box-sizing: border-box;
@@ -13,15 +15,8 @@ html, body {
   margin: 0;
   padding: 12px;
   color: $primary-color;
-}
-
-@media (max-width: 1024px) { 
-  .container {
-    max-width: 38rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10;
-  }
+  font-family: $body-font-stack;
+  display: block;
 }
 
 .container {
@@ -29,6 +24,31 @@ html, body {
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
+  max-width: 38rem !important;
+}
+
+@media (min-width: 38em) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }
 
 header.masthead {
@@ -37,21 +57,32 @@ header.masthead {
   margin-bottom: 3rem;
 }
 
-.title {
+a {
+  color: inherit !important;
 }
 
-a {
-  color: inherit;
+a:hover, a:focus {
+  text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-stack;
 }
 
+.masthead-title a {
+  color: inherit;
+  font-weight: bold;
+}
+
+h3 {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+}
+
 .current {
 }
 
-.masthead-title small {
-  font-weight: 400;
+nav small {
+  font-weight: lighter;
   opacity: .5;
 }
