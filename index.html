@@ -2,4 +2,14 @@
 layout: default
 title: Rajat
 ---
-<h3 class="title">{{ "Hello World!" | downcase }}</h3>
+<h3 class="title">Welcome to my blog! As you can see this whole thing is <span class="error">still under constrution</span> but feel to browse around anyways.</h3>
+
+<br>
+
+<div align="center">
+{% for image in site.static_files %}
+  {% if image.name contains "dear_website" %}
+    <img src="{{ image.path }}" alt="{{ image.name }}"> 
+  {% endif %}
+{% endfor %}
+</div>

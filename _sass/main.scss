@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700');
 
 $primary-color: #303030;
-$secondary-color: #9a9a9a;
+$secondary-color: #2979ff;
+$error-color: #B00020;
 $title-font: 'Space Mono', monospace;
 $header-font-stack: 'Nunito', sans-serif;
 $body-font-stack: 'Raleway', 'Robotos', 'sans-serif';
@@ -28,6 +29,11 @@ html, body {
   padding-left: 15px;
   padding-right: 15px;
   max-width: 38rem !important;
+}
+
+.error {
+  color: $error-color; 
+  text-decoration: underline;
 }
 
 @media (min-width: 38em) {
@@ -94,6 +100,7 @@ h3 {
 
 .blogpost-title {
   font-weight: bold;	
+  color: $secondary-color;
 }
 
 .blogpost-date {
