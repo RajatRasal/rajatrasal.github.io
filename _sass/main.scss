@@ -36,6 +36,10 @@ html, body {
   text-decoration: underline;
 }
 
+.not-error {
+  color: $secondary-color; 
+}
+
 @media (min-width: 38em) {
   html {
     font-size: 18px;
@@ -63,7 +67,7 @@ html, body {
 header.masthead {
   padding-top: 1rem;
   padding-bottom: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 a {
