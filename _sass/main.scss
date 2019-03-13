@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700|Lato:200,300,400,500,700');
 
 $primary-color: #303030;
 $secondary-color: #E83E8C; /* #2979ff; */
 $secondary-color-light: #FF77A9; /* #E83E8C; /* #2979ff; */
 $secondary-color-dark: #B4004E; /*#E83E8C; /* #2979ff; */
-$error-color: #B00020;
+$error-color: #10a9b0; /*#5edbe2; /* #B00020;*/
 $title-font: 'Space Mono', monospace;
 $header-font-stack: 'Nunito', sans-serif;
-$body-font-stack: 'Raleway', 'Robotos', 'sans-serif';
+$body-font-stack: 'Lato', 'Raleway', 'Robotos', 'sans-serif';
 
 * {
   -webkit-box-sizing: border-box;
@@ -20,9 +20,13 @@ html, body {
   padding: 12px;
   color: $primary-color;
   font-family: $body-font-stack !important;
-  font-weight: lighter;
+  font-weight: 200; /*lighter;*/
   display: block;
   height: 100%;
+}
+
+body {
+  font-weight: 300 !important;
 }
 
 .container {
@@ -35,7 +39,7 @@ html, body {
 
 .error {
   color: $error-color; 
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 .not-error {
@@ -157,4 +161,22 @@ hr .main-separator {
 
 .footer #footer-text {
   font-size: 10px;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+.footer-ic:hover {
+  font-weight: 600; 
+}
+
+.facebook-ic-inline:hover {
+  color: #4267B2;
+  transition: .5s ease-in-out;
+}
+
+.github-ic-inline:hover {
+  color: green;
+  transition: .5s ease-in-out;
 }
