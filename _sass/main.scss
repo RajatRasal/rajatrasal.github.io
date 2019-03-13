@@ -20,7 +20,7 @@ html, body {
   padding: 12px;
   color: $primary-color;
   font-family: $body-font-stack !important;
-  font-weight: 200; /*lighter;*/
+  font-weight: 200;
   display: block;
   height: 100%;
 }
@@ -109,8 +109,8 @@ h3 {
 }
 
 .blogpost-title {
-  font-weight: bold;	
-  color: $secondary-color;
+  font-weight: 800;
+  /* color: $secondary-color-light; */
 }
 
 .blogpost-date {
@@ -171,12 +171,26 @@ hr .main-separator {
   font-weight: 600; 
 }
 
-.facebook-ic-inline:hover {
+.facebook-ic-inline {
   color: #4267B2;
+}
+
+.facebook-ic-inline:hover {
+  color: #003d82;
   transition: .5s ease-in-out;
 }
 
-.github-ic-inline:hover {
+.github-ic-inline {
   color: green;
+}
+
+.github-ic-inline:hover {
+  color: darkgreen;
   transition: .5s ease-in-out;
+}
+
+.footnotes {
+  opacity: .3;
+  font-size: .7rem;
+  text-align: left !important;
 }

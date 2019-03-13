@@ -2,15 +2,16 @@
 layout: default
 title: About
 ---
-### `whoami`
+### > `whoami`
 I am a 2nd year student currently studying **Computing at Imperial College London**.
  
 When I'm coding, I'll almost always be using 💙**Python**💙and **Bash (in <a href="https://github.com/RajatRasal/vimrc">VIM</a>)**, but I have used a wide range of other programming languages and tools since **I started programming around 6 years ago**. These range from using cloud based technologies, such as **GCP and AWS**, to **JAVA** for most of my university projects and **C++ and C** for low level things, amongst many others. Web dev is fun too (I'm loving **<a href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">Typescript</a>** at the moment).
 
 
 ##### Experience
-After working under **<a href="https://www.imperial.ac.uk/people/g.gorman">Gerard Gorman</a> and <a href="https://www.imperial.ac.uk/people/p.kelly">Paul Kelly</a> at IC last summer as a software research intern**, I became very interested in Machine Learning and Data Science. This was in part due to Gerard letting me borrow his copy of **"Hands-On Machine Learning with Scikit-Learn and TensorFlow" by Aurélien Géron** (which I am yet to return), which is an absolutely amazing book. 
+After working under **<a href="https://www.imperial.ac.uk/people/g.gorman">Gerard Gorman</a> and <a href="https://www.imperial.ac.uk/people/p.kelly">Paul Kelly</a> at IC last summer as a software research intern**, I became very interested in Machine Learning and Data Science. This was in part due to Gerard letting me borrow his copy of <a href="https://www.amazon.co.uk/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291">**"Hands-On Machine Learning with Scikit-Learn and TensorFlow" by Aurélien Géron**</a> (which I am yet to return) [^keras], which is an absolutely amazing book. 
 
+[^keras]: There is a new version <a href="https://www.amazon.co.uk/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1492032646/ref=pd_lpo_sbs_14_img_1/258-0149394-3034873?_encoding=UTF8&psc=1&refRID=D3YB5NMRD2P0RVTAKHM9">coming out soon</a> which includes Keras!
 
 ##### Projects
 I have worked on a number of awesome **ML and Data Science projects** since then:
@@ -39,4 +40,6 @@ You can find out more about some of my projects in my CV (in the footer), or at 
   {% endif %}
 {% endfor %}
 
-If you want to discuss anything I've mentioned above (or you're an just Imperial CompSci who wants to bitch about the course and life in general) then feel free to add me on <a href="https://www.facebook.com/rajat.rasal.52"><i class="fab fa-facebook-f facebook-ic-inline"></i></a>. Contact me at <img src="{{ email1.path }}" alt="email1" height="20" width="140"> or (more preferably) <img src="{{ email2.path }}" alt="email2" height="20" width="100"> if you want to do something a bit bigger. I'm always interested in what others are working on (particularly in the ML and Python space) and love collaborating with others on useful and interesting projects. <span class="error">I've attached my email addresses as images to prevent any annoying crawlers/scrapers from capturing them and spamming me</span>. Sorry for the inconvenience 😇.
+If you want to discuss anything I've mentioned above (or you're an just Imperial CompSci who wants to bitch about the course and life in general) then feel free to add me on <a href="https://www.facebook.com/rajat.rasal.52"><i class="fab fa-facebook-f facebook-ic-inline"></i></a>. Contact me at <img src="{{ email1.path }}" alt="email1" height="22" width="140"> or (more preferably) <img src="{{ email2.path }}" alt="email2" height="22" width="100"> if you want to do something a bit bigger. I'm always interested in what others are working on (particularly in the ML and Python space) and love collaborating with others on useful and interesting projects. <span class="error">I've attached my email addresses as images to prevent any annoying crawlers/scrapers from capturing them and spamming me</span>. Sorry for the inconvenience 😇.
+
+---

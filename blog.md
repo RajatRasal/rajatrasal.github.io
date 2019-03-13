@@ -2,7 +2,7 @@
 layout: default
 title: Blog
 ---
-## **Blog**
+### <span class="not-error">**Blog**</span>
 Search bar + topic wise search + posts 
 
 {% for post in site.posts %}
