@@ -3,6 +3,7 @@ layout: default
 title: Projects 
 ---
 ### <span class="not-error">**Projects**</span>
+Each project should have a nicely annotated picture associated with it.
 
 {% for post in site.posts %}
 {% if post.type == 'project' %}
