@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700|Lato:200,300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700,800|Lato:200,300,400,500,700|Spectral');
 
+$background-color: #F2EFE8;
 $primary-color: #303030;
-$secondary-color: #E83E8C; /* #2979ff; */
-$secondary-color-light: #FF77A9; /* #E83E8C; /* #2979ff; */
-$secondary-color-dark: #B4004E; /*#E83E8C; /* #2979ff; */
-$error-color: #10a9b0; /*#5edbe2; /* #B00020;*/
+$secondary-color: #E83E8C;
+$secondary-color-light: #FF77A9;
+$secondary-color-dark: #B4004E;
+$error-color: #0AB0EE;
+$link-color: #3E8CE8; /*#0896ee; /*#099eee; /*#0AB0EE;*/
 $title-font: 'Space Mono', monospace;
 $header-font-stack: 'Nunito', sans-serif;
 $body-font-stack: 'Lato', 'Raleway', 'Robotos', 'sans-serif';
@@ -18,6 +20,7 @@ $body-font-stack: 'Lato', 'Raleway', 'Robotos', 'sans-serif';
 html, body {
   margin: 0;
   padding: 12px;
+  /*background-color: $background-color !important;*/
   color: $primary-color;
   font-family: $body-font-stack !important;
   font-weight: 200;
@@ -27,6 +30,11 @@ html, body {
 
 body {
   font-weight: 300 !important;
+}
+
+.inline-links {
+  color: $link-color !important;
+  /* color: $secondary-color-light !important; */
 }
 
 .container {
@@ -140,6 +148,12 @@ hr .main-separator {
   border-top: dotted 1px;
 }
 
+/*
+.tint-pic {
+  background: $background-color;
+}
+*/
+
 .footer {
   flex-shrink: 0;
 }
@@ -193,4 +207,33 @@ hr .main-separator {
   opacity: .3;
   font-size: .7rem;
   text-align: left !important;
+}
+
+.notice {
+  position: relative;
+  min-height: 1em;
+  margin-top: 1.45rem;
+  margin-bottom: 1.45rem;
+  padding: 1em 1.5em 0.5em;
+  border: 2px solid;
+  -webkit-box-shadow: .25em .25em 0 #000;
+  box-shadow: .25em .25em 0 #000;
+}
+
+.notice > h4 {
+  display: block;
+  margin-bottom: 1em;
+  padding-bottom: .5em;
+  border-bottom: 2px solid;
+  font-family: "Space Mono", Courier, monospace;
+  font-size: 1em;
+  font-weight: 800;
+}
+
+.notice > p {
+  /*font-family: "Spectral", Georgia, serif;*/
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+  word-wrap: break-word;
+  font-size: 15px;
 }
