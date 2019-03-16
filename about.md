@@ -5,7 +5,7 @@ title: About
 ### > `whoami`
 I am a 2nd year student currently studying **Computing at Imperial College London**.
  
-When I'm coding, I'll almost always be using **Python** and **Bash** (in <a class="inline-links" href="https://github.com/RajatRasal/vimrc">VIM</a>), but I have used a wide range of other programming languages and tools since **I started programming around 6 years ago**. These range from using cloud based technologies, such as **GCP and AWS**, to **JAVA** for most of my university projects and **C++ and C** for low level things, amongst many others. Web dev is fun too (I'm loving <a class="inline-links" href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">Typescript</a> at the moment).
+When I'm coding, I'll almost always be using **Python** and **Bash** (in <a class="inline-links" href="https://github.com/RajatRasal/vimrc">VIM</a>), but I have used a wide range of other programming languages and tools since **I started programming around 6 years ago**. These range from using cloud based technologies, such as **GCP and AWS**, and DevOps technologies, **Docker and Kubernetes**, to **JAVA** for most of my university projects and **C++ and C** for low level things, amongst many others. Web dev is fun too (I'm loving <a class="inline-links" href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">Typescript</a> at the moment).
 
 
 ##### Experience
@@ -13,12 +13,20 @@ After working under <a class="inline-links" href="https://www.imperial.ac.uk/peo
 
 [^keras]: There is a new version <a class="inline-links" href="https://www.amazon.co.uk/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1492032646/ref=pd_lpo_sbs_14_img_1/258-0149394-3034873?_encoding=UTF8&psc=1&refRID=D3YB5NMRD2P0RVTAKHM9">coming out soon</a> which includes Keras!
 
+Prior to this, I've interned at **Bank of Tokyo Mitsubishi** and <a class="inline-links" href="https://www.pythonanywhere.com">**PythonAnywhere**</a> [^pa].
+
+{% for file in site.static_files %}
+{% if file.name contains 'pythonanywhere' %}
+[^pa]: PA works closely with the Python organisation and host the IDE present on <a class="inline-links" href="https://www.python.org">the Python website</a> <img src="{{ file.path }}" alt="Pythonanywhere on Python site" width="400" height="180">.
+{% endif %}
+{% endfor %}
+
 ##### Projects
-I have worked on a number of awesome **ML and Data Science projects** since then:
-- Multivariate Bitcoin time series forecasting.
-- Performed a detailed data analysis and made predictions on the UK Road Accident’s dataset for **Imperial AI Hack 2018**.
-- Predicted stocks movements based on sentiment analysis of Donald Trump’s tweets at King College London Annual Hackathon. **We were runners up in Capital One Financial Challenge.**
-- Used NLP models to predict the success of a Kickstarter campaign. 
+I have worked on a number of awesome ML and Data Science projects since then:
+- **Multivariate Bitcoin time series forecasting**.
+- Performed a detailed data analysis and made predictions on the UK Road Accident’s dataset for <a class="inline-links" href="">Imperial AI Hack 2018</a>.
+- **Predicted stocks movements based on sentiment analysis of Donald Trump’s tweets** at <a class="inline-links" href="">Hackkings</a>. We were runners up in <a class="inline-links" href="">Capital One</a> Financial Challenge.
+- Used NLP models to **predict the success of a Kickstarter campaign**. 
 
 This has led me to being offered the **Data Science and Machine Learning intern position at HSBC** for the summer of 2019. 
 
