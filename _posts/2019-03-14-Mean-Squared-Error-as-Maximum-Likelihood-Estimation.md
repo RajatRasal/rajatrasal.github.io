@@ -19,17 +19,16 @@ It may help to be aware of the following:
 ##### Defining a Statistical Model for the Data 
 As we said above, the main use of the MLE is to solve the problem of gauging the quality of an estimator. For this to make sense, we need to define a dataset which we can perform our calculations on. 
 
-Consider a dataset which arose from the following statistical models (A): 
+Consider a dataset which arises from the following statistical models (A): 
 
 $$ Y = g_{\theta}(X) + Z \Rightarrow^{\text{realised as}} y_i = \theta x_i + \epsilon_i$$ 
 
-where we can assume the error ($$\epsilon$$) to be produced by an <a class="inline-links" href="https://en.wikipedia.org/wiki/Additive_white_Gaussian_noise">additive white Gaussian model</a>[^occam]. This implies that $$Z \sim \mathcal{N}(0, \sigma^2)$$ and $$E(Z) = 0$$ (B). 
+where $$X$$ and $$Y$$ are continuous random variables and we can assume the error ($$\epsilon$$) to be produced by an <a class="inline-links" href="https://en.wikipedia.org/wiki/Additive_white_Gaussian_noise">additive white Gaussian model</a>[^occam]. This implies that $$Z \sim \mathcal{N}(0, \sigma^2)$$ and $$E(Z) = 0$$ (B). 
 
-[^occam]: We arrive at this assumption through [Occam's Razor](https://en.wikipedia.org/wiki/Occam%27s_razor), which essentially states that a solution with the fewest assumptions is more likely to be correct that other solutions.
+[^occam]: We arrive at this assumption through <a class="inline-links" href="https://en.wikipedia.org/wiki/Occam%27s_razor">Occam's Razor</a>, which essentially states that a solution with the fewest assumptions is more likely to be correct that other solutions.
 
-From a **supervised learning persepctive**, we will begin by observing the system which the model represents and collecting a set $$ \tau = (x_i, y_i)$$ for $$i = 1,...,N$$ of training data, where $$x_i$$s are realisations of $$X$$ and $$y_i$$s are realisations of $$Y$$. The aim of the machine learning problem is to find a $$ \hat{\theta} $$ which best approximates $$ \theta $$ on the training data $$ \tau $$. This is done using a learning algorithm[^further_ml_exp]. The learning algorithm will modify $$ \hat{\theta} $$ based on the magnitude of the error in the approximation. This error will be given by the MSE. Once $$ \hat{\theta} $$ has best learned $$ \tau $$ (repeated the above process for all member of the training set $$ \tau $$ with cross validation etc.), we should have $$ \hat{\theta} x_z \approx \theta x_z $$, for any $$ z > N $$[^out_of_sample].
+From a **supervised learning persepctive**, we will begin by observing the system which the model represents and collecting a set $$ \tau = (x_i, y_i)$$ for $$i = 1,...,N$$ of training data, where $$x_i$$s are realisations of $$X$$ and $$y_i$$s are realisations of $$Y$$. The aim of the machine learning problem is to find a $$ \hat{\theta} $$ which best approximates $$ \theta $$ on the training data $$ \tau $$. This is done using a learning algorithm. The learning algorithm will modify $$ \hat{\theta} $$ based on the magnitude of the error in the approximation. This error will be given by the MSE. Once $$ \hat{\theta} $$ has best learned $$ \tau $$ (repeated the above process for all member of the training set $$ \tau $$ with cross validation etc.), we should have $$ \hat{\theta} x_z \approx \theta x_z $$, for any $$ z > N $$[^out_of_sample].
 
-[^further_ml_exp]: In the hope that for new data from the same system which $$\hat{\theta}$$ hasn't been trained on, it can make reasonable preidctions for $$y$$.
 [^out_of_sample]: Given an input $$x_z$$ which the model has not learned (been trained on), an accurate $$y_z$$ should be predicted.
 
 ##### Maximum Likelihood Estimate
@@ -57,7 +56,7 @@ f(Y = y | X = x, \theta) & = f(Z + g(X) = y | X = x, \theta) \\
 \end{align} 
 $$
 
-By findin\theta the lo\theta-likehood function of $$C$$ ($$ln L = l$$), we can keep \thetaoin\theta:
+By finding the log-likehood function of $$C$$ ($$ln L = l$$), we can keep going:
 
 $$
 \begin{align}
