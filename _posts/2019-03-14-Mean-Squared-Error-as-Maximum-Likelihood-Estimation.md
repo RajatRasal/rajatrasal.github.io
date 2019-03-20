@@ -82,7 +82,7 @@ $$
 \end{align} 
 $$
 
-At this sta\thetae, by square rooting the function we are trying to minimise, we also end up with the root mean square error. Similarly other loss functions can be derived and their use justified.
+At this stage, by square rooting the function we are trying to minimise, we also end up with the root mean square error. Similarly other loss functions can be derived and their use justified.
 
 ##### Conclusion
 Here we can see how by finding the $$\theta$$ (weights/model) which minimses the MSE, we are in turn maximising the likelihood of getting our observed data ($$Y$$) from a given input data set ($$X$$). This is not to say that our model will generalise well to unseen input data, however given a sufficiently large dataset (and many other factors of course...) we should see an improved out of sample prediction quality also. This also highlights why the MSE (and RMSE etc.) is a mathematically logically loss function to choose.
