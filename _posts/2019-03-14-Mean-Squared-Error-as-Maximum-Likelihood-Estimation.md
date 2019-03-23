@@ -4,7 +4,7 @@ author: Rajat
 time: 10
 type: blog 
 ---
-<img src="{{ site.url }}/assets/images/14_03_2019/MSE.jpeg" width="400px" height="300px"> 
+<div align="center"><img src="{{ site.url }}/assets/images/14_03_2019/MSE.jpeg" width="400px" height="300px"></div> 
 
 Anyone who has read about machine learning will be familiar with the **Mean Squared Error (MSE) as loss function in a supervised learning model**. If we generalise a bit, and think about this from a Statistics viewpoint, the **MSE gives us the measure of the quality of an estimator of a parameter**.
 
