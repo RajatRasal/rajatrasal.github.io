@@ -4,6 +4,8 @@ author: Rajat
 time: 10
 type: blog 
 ---
+ <div align="center"><img src="/assets/images/14_03_2019/MSE.pdf" width="400px" height="330px"></div>
+
 Anyone who has read about machine learning will be familiar with the **Mean Squared Error (MSE) as loss function in a supervised learning model**. If we generalise a bit, and think about this from a Statistics viewpoint, the **MSE gives us the measure of the quality of an estimator of a parameter**.
 
 But what makes the MSE a 'good' measure for this? How do we define 'good' in this case? Hoefully this article will answer some of these questions. 
@@ -88,5 +90,9 @@ At this stage, by square rooting the function we are trying to minimise, we also
 Here we can see how by finding the $$\theta$$ (weights/model) which minimses the MSE, we are in turn maximising the likelihood of getting our observed data ($$Y$$) from a given input data set ($$X$$). This is not to say that our model will generalise well to unseen input data, however given a sufficiently large dataset (and many other factors of course...) we should see an improved out of sample prediction quality also. This also highlights why the MSE (and RMSE etc.) is a mathematically logically loss function to choose.
 
 ##### Further Reading + References:
+- <span class="inline-links">[The Elements of Statistical Learning (ML Bible) - Chapter 2.6](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)</span>
+- <span class="inline-links">[Imperial College London, Data Science Society - Academy of AI Notes, Session 6 Slides 8-14](https://github.com/Students-for-AI/The-Academy-of-AI/blob/master/Lecture%206%20-%20Strong%20machine%20learning%20foundations/Strong%20machine%20learning%20foundations.pdf)</span>
+- <span class="inline-links">[Eugine Kang's Medium Article - Maximum Likelihood Estimation](https://medium.com/@kangeugine/maximum-likelihood-estimation-71c5d0f82f4d)</span> 
+- <span class="inline-links">[Will Kurt's Blog - A Deeper look at Mean Squared Error](https://www.countbayesie.com/blog/2019/1/30/a-deeper-look-at-mean-squared-error)</span>
 
 ---
