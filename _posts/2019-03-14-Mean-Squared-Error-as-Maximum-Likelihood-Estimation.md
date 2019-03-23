@@ -8,7 +8,7 @@ type: blog
 
 Anyone who has read about machine learning will be familiar with the **Mean Squared Error (MSE) as loss function in a supervised learning model**. If we generalise a bit, and think about this from a Statistics viewpoint, the **MSE gives us the measure of the quality of an estimator of a parameter**.
 
-But what makes the MSE a 'good' measure for this? How do we define 'good' in this case? Hoefully this article will answer some of these questions. 
+But what makes the MSE a 'good' measure for this? How do we define 'good' in this case? Hopefully this article will answer some of these questions. 
 
 ##### Prerequisites
 There is no need to understand a great deal about machine learning to make sense of this article, but it would help put things into perspective. Hopefully anyone doing a first year university course in Maths, Statistics or Computer Science shouldn't find this too much of a stretch to read either.
