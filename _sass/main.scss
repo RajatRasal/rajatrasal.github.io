@@ -10,6 +10,7 @@ $link-color: #3E8CE8; /*#0896ee; /*#099eee; /*#0AB0EE;*/
 $title-font: 'Space Mono', monospace;
 $header-font-stack: 'Nunito', sans-serif;
 $body-font-stack: 'Lato', 'Raleway', 'Robotos', 'sans-serif';
+$code-background: #EDE7E3;
 
 * {
   -webkit-box-sizing: border-box;
@@ -243,4 +244,9 @@ figcaption {
   font-style: italic;
   font-weight: 100;
   font-size: 10px;
+}
+
+.highlight {
+  background-color: $code-background !important;
+  padding: 10px 5px 5px 10px; 
 }
