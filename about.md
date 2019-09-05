@@ -7,7 +7,7 @@ I am a 2nd year student currently studying **Computing at Imperial College Londo
  
 When I'm coding, I'll almost always be using **Python** and **Bash** (in <a class="inline-links" href="https://github.com/RajatRasal/vimrc">VIM</a>), but I have used a wide range of other programming languages and tools since **I started programming around 6 years ago**. These range from using cloud based technologies, such as **GCP and AWS**, and DevOps technologies, **Docker and Kubernetes**, to **JAVA** for most of my university projects and **C++ and C** for low level things, amongst many others. Web dev is fun too (I'm loving <a class="inline-links" href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">Typescript</a> at the moment).
 
-I would say I'm a full-stack developer with a good understanding of machine learning and data science.
+I would say I'm a full-stack developer with a good understanding of machine learning and data science concepts.
 
 ##### Experience
 After working under <a class="inline-links" href="https://www.imperial.ac.uk/people/g.gorman">Gerard Gorman</a> and <a class="inline-links" href="https://www.imperial.ac.uk/people/p.kelly">Paul Kelly</a> at **IC last summer as a software research intern**, I became very interested in Machine Learning and Data Science. This was in part due to Gerard letting me borrow his copy of <a class="inline-links" href="https://www.amazon.co.uk/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291">"Hands-On Machine Learning with Scikit-Learn and TensorFlow" by Aurélien Géron</a> (which I am yet to return) [^keras], which is an absolutely amazing book. 
@@ -24,10 +24,10 @@ I've interned at **Bank of Tokyo Mitsubishi** and <a class="inline-links" href="
 
 ##### Projects
 I've worked on a number of large software engineering projects:
-- NotepaceAR - An innovative mobile app for students who are visual-spacial learners. Students can post interactive virtual post-it notes through their camera using AR technology, which they can later view for interactive revision on their own or with friends.
-- WACC Compiler - Used Java and ANTLR tool to create a compiler for the WACC programming language. 
-- PintOS - Optimised/developed key features of a simple Operating System for the 80x86 architecture in a small team using C.
-- Cricket Scorecard - Web based cricket scorecard using Django, JQuery and a Node.js server to post real-time score updates to Twitter.
+- **NotepaceAR** - An innovative mobile app for students who are visual-spacial learners. Students can post interactive virtual post-it notes through their camera using **AR technology**, which they can later view for interactive revision on their own or with friends.
+- **WACC Compiler** - Used Java and ANTLR tool to create a compiler for the WACC programming language. 
+- **PintOS** - Optimised/developed key features of a simple Operating System for the 80x86 architecture in a small team using C.
+- **Cricket Scorecard** - Web based cricket scorecard using Django, JQuery and a Node.js server to post real-time score updates to Twitter.
 
 I've also have worked on some awesome ML and Data Science projects:
 - **Multivariate Bitcoin time series forecasting**.
