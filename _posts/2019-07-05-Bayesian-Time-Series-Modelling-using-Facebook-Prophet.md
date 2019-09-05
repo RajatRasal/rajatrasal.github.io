@@ -138,19 +138,19 @@ model.fit(train_df)
 </figure>
 
 
-##### Comparison to ARIMA
+### Comparison to ARIMA
 It is also quite easy to factor in business knowledge in the form of other regressors into an ARIMA family model. [```Statsmodels```](https://www.statsmodels.org/stable/index.html) allows you to factor in exogenous regressors into [```SARIMAX```](https://www.statsmodels.org/dev/examples/notebooks/generated/statespace_sarimax_stata.html), [```VARIMAX```](https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.varmax.VARMAX.html) and [```ARIMA```](https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima_model.ARIMA.html) models. However, the nature of these models means that there are many parameters which need to be tuned, often based our interpretations of Fourier transform spectral decompositions, ACF plots, PACF plots and stationarity tests. This is obviously prone to error, requires a lot of understanding to do and can be incredibly tedious. 
 
 This is not to say that using Prophet requires no understanding of the underlying mathematical concepts. Yet given the way that Facebook has packaged up this MCMC time series forecaster, one can gain familiarity with the maths through actually trying out the model with example data, since it is very easy to use out of the box, very much unlike Statsmodels' ARIMA models.
 
-##### Comparison to RNNs
+### Comparison to RNNs
 With RNNs, you can configure the model for multivariate time-series inputs also. However the main issue here is with training times due to the large matrix of weights that the model is learning. After being tuned, RNNs can produce highly accurate models which often overfit the data, which also begs the question as to whether all the learned information is actually necesary. For a stock price forecast, a general idea of which direction the price will move in within some degree of uncertainty and magnitude of fluctuation is sufficient. This can be done using statistical methods with far less computational effort than a machine learning model, and Prophet makes this particularly easy. Since model in production are often retrained as new data becomes available, statistical models can lead to significant performance improvements. 
 
 More general issues also arise with explainability when using machine learning models over statistical ones [^explainability].
 
 [^explainability]: GDPR gives EU citizens the "right to a human review" of any algorithms whose decision has affected them. As a result, AI rise in the traditional world of financial has been very slow. Tech companies are trying to solve issues with explainability in innovative ways - <span class="inline-links">[this article](https://www.bloomberg.com/news/articles/2018-12-12/artificial-intelligence-has-some-explaining-to-do)</span> has more info. 
 
-#### TL;DR
+### TL;DR
 - Prophet is easier to use for non-experts than RNNs and ARIMA models; allows you to easily factor in business understanding and intuition through exogenous regressors.
 - Requires significantly less training time and parameterisation effort than alternative models.
 - Prophet is a great untuned baseline for univariate and multivariate time series modelling problem.
