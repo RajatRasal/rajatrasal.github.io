@@ -5,7 +5,7 @@ title: About
 ### > `whoami`
 I am a 2nd year student currently studying **Computing at Imperial College London**.
  
-When I'm coding, I'll almost always be using **Python** and **Bash** (in <a class="inline-links" href="https://github.com/RajatRasal/vimrc">VIM</a>), but I have used a wide range of other programming languages and tools since **I started programming around 6 years ago**. These range from using cloud based technologies, such as **GCP and AWS**, and DevOps technologies, **Docker and Kubernetes**, to **JAVA** for most of my university projects and **C++ and C** for low level things, amongst many others. Web dev is fun too (I'm loving <a class="inline-links" href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">Typescript</a> at the moment).
+When I'm coding, I'll almost always be using **Python** and **Bash** (in <a class="inline-links" href="https://github.com/RajatRasal/vimrc">VIM</a>), but I have used a wide range of other programming languages and tools since **I started programming around 6 years ago**. These range from using cloud and big data technologies, such as **GCP and Hadoop**, and DevOps technologies, **Docker and Kubernetes**, to **JAVA** for most of my university projects and **C++ and C** for low level things, amongst many others. Web dev is fun too (I'm loving <a class="inline-links" href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">Typescript</a> at the moment).
 
 I would say I'm a full-stack developer with a good understanding of machine learning and data science concepts.
 
