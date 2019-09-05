@@ -19,14 +19,12 @@ Facebook has done a particularly good job at addressing this issue with their <s
 
 [^more_info]: Refer to the 'Further Reading + References' section for more info on MCMC.
 
-### Example: Temperature 
+### Facebook Prophet
+##### Example: Temperature 
 The following example uses the <span class="inline-links">[Earth surface temperature dataset](https://www.kaggle.com/berkeleyearth/climate-change-earth-surface-temperature-data)</span> on Kaggle put together by the <span class="inline-links">[Berkeley Earth](http://berkeleyearth.org/data/)</span> team.
 
-##### Facebook Prophet
 We rename columns to Prophet's expected format. There need to be 'ds' and 'y' columns; 'ds' will be in a Pandas datestamp or Pandas timestamp format and 'y' will be the numeric feature we want to forecast.
 ``` python
-import pandas as pd
-
 uk_avg_temp = pd.read_csv(...)
 
 # Convert date strings to datetime objects.
@@ -78,23 +76,86 @@ plt.show()
   <figcaption>Forecast from Prophet model</figcaption>
 </figure>
 
+##### Example: AAPL Stock Prices 
+In this example we examine Apple stock prices. It is almost always unreliable to use any kind of forecasting algorithm to predict for stock prices (and expect to make any money from this). Regardless, this still allows us to see Prophet's key feature of being able to easily factor **useful assumptions or heuristics** into a model. 
+
+We can look at SMAPE and RSME metrics to get a sense of the model's performance. It is also useful to look at the predicted and expected out-of-sample graph to get a sense of how successfully the trend has been learned. This is often not clear from the metrics alone. 
+
+If we run Prophet with only weekly and yearly regressors, we get the following metrics and graph. Although the magnitude of the peaks and trough in haven't been captured very well, there is still a clear **correspondance between the changepoints on both lines**. This is often **all that is required from time series modelling for stock prices**[^standardizing]; an indication of when the price will go up or down, giving the user an idea of when to buy or sell.
+
+[^standardizing]: We often normalise the time series data we have, such that it is centered around a mean 0, since all we often want to see if when and by how much the stock prices will fluctuate.
+
+<figure align="center">
+  <img src="{{ site.url }}/assets/images/bayesian_time_series/ootb_prophet_aapl_prediction.png" height="320px" width="100%" alt="Out of the box model with yearly and weekly regressors">
+  <figcaption>SMAPE: 5.09, RSME: 3.21</figcaption>
+</figure>
+
+The most obvious exogenous factor that I thought would contribute to AAPL stock fluctuations would be the (potential) launch of a new product. These would be indiciated by the dates of Apple's annual developers conference, where such announced tend to be made. So I decided to scrape a Wikipedia page for the appropriate dates and factor those into the model as changepoints, which can be done directly though Prophet's interface. Prophet also allows you to factor regional holidays into the model, and includes regressors for each of these. There may be a spike in Apple product sales during holidays in key regions such as the UK, US and China. With more regressors we do get a spikier model, but this could easily smoothed by fitting a polynomial (```np.polyfit```) curve, a Fourier series or spline curves through it. Regardless, we see an increase in the performance metrics and better fitting of peaks and troughs of the original curve. 
+
+```python
+from fbprophet.make_holidays import make_holidays_df
+
+key_dates = [scraped dates from Wikipedia page]
+
+# Get Holiday dates from key regions that Apple sells
+# its products in within the date range of all available
+# time series data.
+year_list = list(df.index.year.unique())
+chinese_holidays = make_holidays_df(year_list=year_list, country='CN')
+uk_holidays = make_holidays_df(year_list=year_list, country='UK')
+us_holidays = make_holidays_df(year_list=year_list, country='US')
+
+# Create dataframe with holiday dates in Prophet's expected format.
+holidays = pd.concat([chinese_holidays, uk_holidays, us_holidays]) \
+    .sort_values('ds') \
+    .drop_duplicates(subset=['ds'], keep='first') \
+    .reset_index() \
+    .drop(columns=['index'])
+
+
+model = Prophet(yearly_seasonality=11, weekly_seasonality=11, 
+                changepoints=key_dates, holidays=holidays)
+model.fit(train_df)
+```
+
+<figure align="center">
+  <img src="{{ site.url }}/assets/images/bayesian_time_series/changepoints_prophet_aapl_prediction.png" height="320px" width="100%" alt="Out of the box model with yearly and weekly regressors">
+  <figcaption>SMAPE: 3.69, RSME: 2.57</figcaption>
+</figure>
+
+I wanted to include iPhone sales statistics as another factor to regress on, as I felt this would directly impact AAPL's stock price, however this data was very difficult to collect. Instead I have opted for using Google search trends for the term 'iPhone'. Hopefully this would serve as a meaningful factor when quantifying the popularity of Apple products. This resulted in slightly worse performace metrics. Although the result better fit the upward trend of the AAPL stock price, it didn't consider the occasional dip. This may be because when Apple gets negative press, their search results may still increase although their stock price would decrease.
+
+``` python
+model = Prophet(yearly_seasonality=11, weekly_seasonality=11, 
+                changepoints=key_dates, holidays=holidays)
+model.add_regressor('Searches')
+model.fit(train_df)
+```
+
+<figure align="center">
+  <img src="{{ site.url }}/assets/images/bayesian_time_series/searches_prophet_aapl_prediction.png" height="320px" width="100%" alt="Out of the box model with yearly and weekly regressors">
+  <figcaption>SMAPE: 3.72, RSME: 2.63</figcaption>
+</figure>
 
 
 ##### Comparison to ARIMA
+It is also quite easy to factor in business knowledge in the form of other regressors into an ARIMA family model. [```Statsmodels```](https://www.statsmodels.org/stable/index.html) allows you to factor in exogenous regressors into [```SARIMAX```](https://www.statsmodels.org/dev/examples/notebooks/generated/statespace_sarimax_stata.html), [```VARIMAX```](https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.varmax.VARMAX.html) and [```ARIMA```](https://www.statsmodels.org/stable/generated/statsmodels.tsa.arima_model.ARIMA.html) models. However, the nature of these models means that there are many parameters which need to be tuned, often based our interpretations of Fourier transform spectral decompositions, ACF plots, PACF plots and stationarity tests. This is obviously prone to error, requires a lot of understanding to do and can be incredibly tedious. 
 
-##### Comparison to LSTMs
+This is not to say that using Prophet requires no understanding of the underlying mathematical concepts. Yet given the way that Facebook has packaged up this MCMC time series forecaster, one can gain familiarity with the maths through actually trying out the model with example data, since it is very easy to use out of the box, very much unlike Statsmodels' ARIMA models.
 
-### Example: AAPL Stock Prices 
-Refer to <span class="inline-links">[this]()</span> Jupyter notebook for another example where I specify custom seasonalities for the same model and train model regressors to catch these separate patterns. 
+##### Comparison to RNNs
+With RNNs, you can configure the model for multivariate time-series inputs also. However the main issue here is with training times due to the large matrix of weights that the model is learning. After being tuned, RNNs can produce highly accurate models which often overfit the data, which also begs the question as to whether all the learned information is actually necesary. For a stock price forecast, a general idea of which direction the price will move in within some degree of uncertainty and magnitude of fluctuation is sufficient. This can be done using statistical methods with far less computational effort than a machine learning model, and Prophet makes this particularly easy. Since model in production are often retrained as new data becomes available, statistical models can lead to significant performance improvements. 
 
+More general issues also arise with explainability when using machine learning models over statistical ones [^explainability].
 
-##### Conclusion
-- Easier to use for non-experts
-- 
-- Accuracy Metrics
-- Training Time
-- Tuning Time
-Prophet is a great untuned baseline. For another example of 
+[^explainability]: GDPR gives EU citizens the "right to a human review" of any algorithms whose decision has affected them. As a result, AI rise in the traditional world of financial has been very slow. Tech companies are trying to solve issues with explainability in innovative ways - <span class="inline-links">[this article](https://www.bloomberg.com/news/articles/2018-12-12/artificial-intelligence-has-some-explaining-to-do)</span> has more info. 
+
+#### TL;DR
+- Prophet is easier to use for non-experts than RNNs and ARIMA models; allows you to easily factor in business understanding and intuition through exogenous regressors.
+- Requires significantly less training time and parameterisation effort than alternative models.
+- Prophet is a great untuned baseline for univariate and multivariate time series modelling problem.
+
+As I have stated a few times, for financial time series modelling we only really need to know whether the prices will go up or down and some degree of uncertainty or magnitude of the fluctuation. With this is mind, we can use a standard scaler, which centers all data points around 0, and a log scaler to remove any skew, and then pass the time series through the same models. This will generally give you more meanignful insights and better metrics, although this is out of the scope of this article. I have included feature scaling, feature engineering, such as the code used to scrape the web, other time series models, such as RNNs and SARIMAX, and all other code used to produce the graph above in this [Jupyter notebook]().
 
 ##### Further Reading + References:
 {% for file in site.static_files %}
@@ -103,6 +164,7 @@ Prophet is a great untuned baseline. For another example of
   {% endif %}
 {% endfor %}
 - <span class="inline-links">[Sorry ARIMA, but I’m Going Bayesian](https://multithreaded.stitchfix.com/blog/2016/04/21/forget-arima/)</span> from Kim Larsen's blog
-- <span class="inline-links">[An Interactive Guide To The Fourier Transform](https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/)</span>
+- <span class="inline-links">[7 Ways Time Series Forecasting Differs from Machine Learning](https://www.datascience.com/blog/time-series-forecasting-machine-learning-differences)</span> from Oracle's data science blog
+- <span class="inline-links">[Facebook Prophet Docs](https://facebook.github.io/prophet/)</span>
 
 ---

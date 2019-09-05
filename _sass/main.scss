@@ -11,6 +11,7 @@ $title-font: 'Space Mono', monospace;
 $header-font-stack: 'Nunito', sans-serif;
 $body-font-stack: 'Lato', 'Raleway', 'Robotos', 'sans-serif';
 $code-background: #EDE7E3;
+$code-font-size: 13px;
 
 * {
   -webkit-box-sizing: border-box;
@@ -249,4 +250,5 @@ figcaption {
 .highlight {
   background-color: $code-background !important;
   padding: 10px 5px 5px 10px; 
+  font-size: $code-font-size;
 }
