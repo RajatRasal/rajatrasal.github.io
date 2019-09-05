@@ -250,5 +250,5 @@ figcaption {
 .highlight {
   background-color: $code-background !important;
   padding: 10px 5px 5px 10px; 
-  font-size: $code-font-size;
+  font-size: $code-font-size !important;
 }
