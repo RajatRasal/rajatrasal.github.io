@@ -86,9 +86,22 @@ public class Test {
 
 [^ide]: Intellij, or even clever usage of sed, might make this process easier, but its still a real pain having to go through it. Just use explicit single type imports to begin with. *Please!*
 
+<br>
 
 #### C++
-C introduces the concept of namespaces.
+C++ introduces the concept of namespaces as a structural programming langauge construct. 
+
+<blockquote>
+dwqddwqd
+</blockquote>
+
+>> A namespace is a mechanism for expressing logical grouping. That is, if some declarations logically belong together according to some criteria, they can be put in a common namespace to express this fact.
+
+Java implicity uses the idea of namespaces through packaging. The details of the differences between each are beyond the scope of this article ... https://stackoverflow.com/questions/2108172/c-namespaces-comparison-to-java-packages
+
+So we can see the key purpose of namespaces in software engineering as allowing us to scope identifiers and prevent name collisions as a project becomes larger and requires better structure.
+
+https://en.wikipedia.org/wiki/Namespace
 
 #### Back to the problem - Python 
 In Python, import all issues come about as a combination of the Java and C++ lanaguage design style. 
@@ -97,7 +110,7 @@ Python works differently to Java and takes the latest definition it discovers.
 
 Seems to be the product of having translated Spark's Scala interface to Python without much thought, as well as the - refer to the rule about clarity in the Zen of Python.
 
-### TL;DR
+### TL;DR?
 Just use fully qualified explicit imports.
 
 do and dont table
@@ -105,7 +118,19 @@ Java
 Cpp
 Python
 
+#### Unnecesary extra information - Name Mangling
+The way languages handle conflicting identifier names within a namespace is called **mangling**. Asimple example is how the Java compiler handles inner and anonymous classes.
+
+Another one is the Python standard for marking object methods as *private*. 
+
+Or C++ and function definition overloading. The method of mangling will vary from compiler to compiler.
+
+https://en.wikipedia.org/wiki/Name_mangling
+
+I will definitely have to write a separate article on name mangling. 
+
 #### References
 - https://www.tutorialspoint.com/compiler_design/compiler_design_phases_of_compiler.htm
 - https://openjdk.java.net/groups/compiler/doc/compilation-overview/index.html
-- Java in a nutshell - Importing Types page 90 - 95
+- Java in a nutshell by Benjamin J. Evans & David Flanagan - Importing Types page 90 - 95
+- The C++ programming language by Bjarne Stroustrup - Chapter 8 Namespaces and Exceptions
