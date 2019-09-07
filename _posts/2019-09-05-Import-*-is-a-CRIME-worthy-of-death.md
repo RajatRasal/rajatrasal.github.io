@@ -91,15 +91,16 @@ public class Test {
 #### C++
 C++ introduces the concept of namespaces as a structural programming langauge construct. 
 
-<blockquote>
-dwqddwqd
+<blockquote class="tech-quote">
+A <u>namespace</u> is a mechanism for expressing logical grouping. That is, if some declarations <u>logically belong together according to some criteria</u>, they can be put in a common namespace to express this fact.
+<nobr>
+  <footer>The C++ Programming Language by Bjarne Stroustrup</footer>
+</nobr>
 </blockquote>
-
->> A namespace is a mechanism for expressing logical grouping. That is, if some declarations logically belong together according to some criteria, they can be put in a common namespace to express this fact.
 
 Java implicity uses the idea of namespaces through packaging. The details of the differences between each are beyond the scope of this article ... https://stackoverflow.com/questions/2108172/c-namespaces-comparison-to-java-packages
 
-So we can see the key purpose of namespaces in software engineering as allowing us to scope identifiers and prevent name collisions as a project becomes larger and requires better structure.
+So we can see the **key purpose of namespaces** in software engineering as **allowing us to scope identifiers and prevent name collisions** as a project becomes larger and requires better structure.
 
 https://en.wikipedia.org/wiki/Namespace
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700,800|Lato:200,300,400,500,700|Spectral');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400|Raleway:400,600|Roboto|Space+Mono:400,700,800|Lato:200,300,400,500,700|Spectral|Sanchez:300,400italic,100,200,300,400');
 
 $background-color: #F2EFE8;
 $primary-color: #303030;
@@ -12,6 +12,7 @@ $header-font-stack: 'Nunito', sans-serif;
 $body-font-stack: 'Lato', 'Raleway', 'Robotos', 'sans-serif';
 $code-background: #EDE7E3;
 $code-font-size: 13px;
+$blockquote-shade: hsl(50, 5, 97);
 
 * {
   -webkit-box-sizing: border-box;
@@ -249,6 +250,45 @@ figcaption {
 
 .highlight {
   background-color: $code-background !important;
-  padding: 10px 5px 5px 10px; 
+  padding: 10px 5px 1px 10px; 
   font-size: $code-font-size !important;
+}
+
+.tech-quote {
+  position: relative;
+  font-family: 'Sanchez', serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  color: hsl(200, 40, 40);
+  
+  p {
+    margin-bottom: 0px !important;
+    padding: 0 1.5em 0 1.2em;
+  }
+
+  footer {
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 0.6em;
+    font-weight: 700;
+    color: darken($blockquote-shade, 15%);
+    text-align: right;
+    margin-top: -15px;
+
+    &:before {
+      content: '\2015';
+    }
+  }
+
+  /* Quotation Mark */
+  &:after {
+    content: '\201D';
+    position: absolute;
+    top: 0.2em;
+    right: 0;
+    font-size: 6em;
+    font-style: italic;
+    color: darken($blockquote-shade, 7%);
+    z-index: -1;
+  }
 }
