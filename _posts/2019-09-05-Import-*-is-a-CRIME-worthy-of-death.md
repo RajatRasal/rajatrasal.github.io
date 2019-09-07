@@ -72,7 +72,7 @@ Even if the on-demand imports don't result in a clash, as the ones above did, th
 
 [^jars]: Of course all large Java projects should be split up into microservices, with each being packaged into a jar, but seeing as we are looking at bad coding practices I thought the case of not converting packages to jars would be appropriate to mention.
 
-One of the most annoying situation I can imagine is when an external package you are on-demand importing gets updated. So if ```external_animal_package``` created its own ```Dog``` one fine day, my code below will suddenly fail, and I'll have to go through the effort of carefully refactoring what, at this stage, might have become a very large java file[^ide].
+One of the most annoying situation I can imagine is when an external package you are on-demand importing gets updated. So if ```external_animal_package``` creators make their own ```Dog``` class one fine day, the code below will suddenly fail, and I'll have to go through the effort of carefully refactoring what, at this stage, might have become a very large java file[^ide].
 ``` java
 import animals.*;
 import external_animals_package.*;
@@ -93,11 +93,78 @@ C++ introduces the concept of namespaces as a structural programming langauge co
 
 {% include techquote.html quote="A <u>namespace</u> is a mechanism for expressing logical grouping. That is, if some declarations <u>logically belong together according to some criteria</u>, they can be put in a common namespace to express this fact." footer="The C++ Programming Language by Bjarne Stroustrup" %}
 
-Java implicity uses the idea of namespaces through packaging. The details of the differences between each are beyond the scope of this article ... https://stackoverflow.com/questions/2108172/c-namespaces-comparison-to-java-packages
+Java implicity allows for namespacing through packages. The details of the differences between each are beyond the scope of this article but are explained quite nicely in these stack overflow posts <span class="inline-links">[1](https://stackoverflow.com/questions/4792823/java-packages-vs-c-libraries)</span> <span class="inline-links">[2](https://stackoverflow.com/questions/2108172/c-namespaces-comparison-to-java-packages)</span>.
 
-So we can see the **key purpose of namespaces** in software engineering as **allowing us to scope identifiers and prevent name collisions** as a project becomes larger and requires better structure.
+So we can see the **key purpose of namespaces** in software engineering as **allowing us to scope identifiers (i.e. variables, functions, classes etc.) and prevent name collisions** as a project becomes larger and requires better structure.
 
-https://en.wikipedia.org/wiki/Namespace
+However, even with the introduction of namespaces a lazy programmer can end up polluting the global namespace through the ```using``` directive. This causes the same name clashing issues we would have had without namespaces, which is especially problematic with C++ who's standard library has become quite a monster over the past few versions. Consider the following snippet of code which compiles just fine up until C++14 but fails in C++17.
+
+``` c++
+>>> cat test_bytes.cpp
+#include <string>
+
+using namespace std;
+
+class byte {};
+
+int main() {
+  byte test_byte;
+  return 0;
+}
+>>>
+>>>
+>>> g++ -std=c++14 test_bytes.cpp -o test_bytes.o
+>>>
+>>>
+>>> g++ -std=c++17 test_bytes.cpp -o test_bytes.o
+test_bytes.cpp:8:3: error: reference to 'byte' is ambiguous
+  byte test_byte;
+  ^
+test_bytes.cpp:5:7: note: candidate found by name lookup is 'byte'
+class byte {};
+      ^
+/Library/Developer/CommandLineTools/usr/include/c++/v1/cstddef:65:12: 
+note: candidate found by name lookup is 'std::byte'
+enum class byte : unsigned char {};
+           ^
+1 error generated.
+```
+
+<br>
+
+Once again Google's style guide prohibits the <span class="inline-links">[*using-directive to make all names from a namespace available*](https://google.github.io/styleguide/cppguide.html#Namespaces)</span>.  
+
+A better way to separate the ```std::byte``` from our own definition of ```byte``` would be to:
+1. use fully qualified definition imports (seen below),
+2. make use of <span class="inline-links">[anonymous namespaces](https://google.github.io/styleguide/cppguide.html#Unnamed_Namespaces_and_Static_Variables)</span> (seen below) or, if you are developing a library, 
+3. <span class="inline-links">[wrapping the entire source file in a namespace](https://google.github.io/styleguide/cppguide.html#Namespaces)</span>.
+
+``` c++
+#include <string>
+
+namespace {
+  class byte {}; 
+  void create_byte();
+}
+
+namespace create_bytes {
+  void create_byte() {
+    byte test_byte;
+  }
+}
+
+int main() {
+  using std::byte;
+
+  std::byte test_std_byte;
+
+  create_bytes::create_byte();
+
+  return 0;
+}
+```
+
+The worst case scenario I can think of here is ```using``` an entire namespace from a header file such that **all the identifiers within the namespace becomes part of the published API.** 
 
 #### Back to the problem - Python 
 In Python, import all issues come about as a combination of the Java and C++ lanaguage design style. 
@@ -130,3 +197,4 @@ I will definitely have to write a separate article on name mangling.
 - https://openjdk.java.net/groups/compiler/doc/compilation-overview/index.html
 - Java in a nutshell by Benjamin J. Evans & David Flanagan - Importing Types page 90 - 95
 - The C++ programming language by Bjarne Stroustrup - Chapter 8 Namespaces and Exceptions
+- Using anonymous namespaces over static global
