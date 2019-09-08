@@ -27,7 +27,7 @@ AttributeError: 'NoneType' object has no attribute '_jvm'
 ```
 *Why am I getting errors to do with the JVM when I'm using Python's inbuilt sum function?!?!?!* 😰😓
 
-Before we go any further, I want to make it completely clear that **I would never write code like this!** There are so many issues associated with ```import *```-like statements. They polluate the global namespace and make code very hard to follow, resulting in many unusual errors that, with very little extra effort, are completely avoidable.  
+Before we go any further, I want to make it completely clear that **I would never write code like this!** There are so many issues associated with ```import *```-like statements. They pollute the global namespace and make code very hard to follow, resulting in many unusual errors that, with very little extra effort, are completely avoidable.  
 
 After coming across this error, I became quite interested in seeing how other programming language compilers and interpreters handle issues with global namespace pollution. Python was greatly influenced by Java[^java_influence] and C++[^cpp_influence]. By examining how *these* languages handle errors with namespace pollution, I thought I would get a better understanding of Python's core design philosophy.
 
