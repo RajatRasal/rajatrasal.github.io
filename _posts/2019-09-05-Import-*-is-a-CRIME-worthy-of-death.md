@@ -4,7 +4,7 @@ author: Rajat
 time: 4
 type: blog 
 ---
-I recently came across an error very similar in a colleagues' code when she was using ```pyspark``` for an exploratory data analysis - can you guess what caused it?
+I recently came across an error very similar to this one in a colleagues' code when he was using ```pyspark``` for an exploratory data analysis - can you guess what caused it?
 
 ``` python
 >>> cat eda.py
@@ -40,13 +40,13 @@ In Java, the ```import``` keyword is used to indicated packages and classes wher
 1. **Single type imports**, e.g. ```import java.util.List```, allows us to use a class/type within a file without having to use its fully qualified class name each time. 
 2. **On-demand imports**, e.g. ```import java.util.*```, indicates that any class/type within the package could be used within the code without being fully qualified.[^java_interpreter]
 
-These types of imports (and more) are also found in Python with the same behaviour.[^findingclasses]
+These types of imports (and more) are also found in Python and have the same behaviours.[^findingclasses]
 
 [^java_interpreter]: The Java interpeter (i.e. ```java``` command line tool) is responsible for translating the .class file containing the Java bytecode to machine dependent object code which can be run.
 
 [^findingclasses]: Read this <span class="inline-links">[article](https://docs.oracle.com/javase/8/docs/technotes/tools/findingclasses.html)</span> for a better explanation of how the Java compiler goes about finding definitions for classes which have been used within a .java file. It is beyond the scope of this article but may help bridge the gaps in my part explanation.
 
-```Packages``` and ```imports``` (as well as access controls) in Java allow the developer to split up a single namespace to prevent identifier names clashing. This also helps to better encapsulate different sections of the codebase. However careless use of on-demand imports can result in the kind of confusing and unnecesary import errors we want to avoid. **So it's best not to use this style of imports altogether, and use fully qualified classnames if required.** Google's code style explicity prohibits <span class="inline-links">[*wildcard imports*](https://google.github.io/styleguide/javaguide.html#s3.3-import-statements)</span> for this reason.
+```Packages``` and ```imports``` (as well as access controls) in Java allow the developer to split up a large codebase to prevent identifier names clashing. This also helps to better encapsulate different sections of the codebase from each other. However, careless use of on-demand imports can result in the kind of confusing and unnecesary import errors we want to avoid. **So it's best not to use this style of imports altogether, and use fully qualified classnames if required.** Google's code style explicity prohibits <span class="inline-links">[*wildcard imports*](https://google.github.io/styleguide/javaguide.html#s3.3-import-statements)</span> for this reason.
 
 ``` java
 >>> cat Test.java
@@ -69,9 +69,9 @@ in java.awt match
 1 error
 ```
 
-The Java compiler handles clashing identifiers by throwing an error and preventing the compilation of the file. It seems as if all classes/types found by looking in the packages specified by the ```import``` statements at the top of the file are appended to a global symbol tables by the compiler, then during the semantic analysis stage of the compilation, an error is thrown when the conflicting class names are found in the class files. As Java is a compiler language, this bug will luckily never make it to the runtime stage.
+The Java compiler handles clashing identifiers by throwing an error and stopping the compilation of the file. It seems as if all classes/types found by looking in the packages specified by the ```import``` statements at the top of the file are appended to a global symbol tables by the compiler, then during the semantic analysis stage of the compilation, an error is thrown when the conflicting class names are detected. As Java is a compiled language, this bug will luckily never make it to the runtime stage.
 
-Even if the on-demand imports don't result in a clash, as the ones above did, they may still increase compile time given that the semantic analyser may have to search through large package structures, especially if the packages have not been converted to jars [^jars]. Although this may not cause a significant time delay for the (re)deployment of an application or result in any latency at runtime, it may slow down CI/CD pipelines and spin up times for Docker containers when testing as your project size gets larger. This could be a real nuisance during development.
+Even if the on-demand imports don't result in a clash, as the ones above did, they may still increase compilation times given that the semantic analyser may have to search through large package structures, especially if the packages have not been converted to jars [^jars]. Although this may not cause a significant time delay for the (re)deployment of an application or result in any latency at runtime, it may slow down CI/CD pipelines and spin up times for Docker containers when testing as your project size gets larger. This could be a real nuisance during development.
 
 [^jars]: Of course all large Java projects should be split up into microservices, with each being packaged into a jar, but seeing as we are looking at bad coding practices I thought the case of not converting packages to jars would be appropriate to mention.
 
@@ -90,15 +90,15 @@ public class Test {
 [^ide]: Intellij, or even clever usage of the sed bash command, might make this process easier, but its still a real pain having to go through it. Just use explicit single type imports to begin with. *Please!*
 
 ### C++
-C++ introduces the concept of namespaces as a construct with a programming langauge. 
+C++ introduces the concept of namespaces as a programming langauge construct. 
 
 {% include techquote.html quote="A <u>namespace</u> is a mechanism for expressing logical grouping. That is, if some declarations <u>logically belong together according to some criteria</u>, they can be put in a common namespace to express this fact." footer="The C++ Programming Language by Bjarne Stroustrup" %}
 
 Java implicity allows for namespacing through packages. The details of the differences between each are beyond the scope of this article but are explained quite nicely in these stack overflow posts <span class="inline-links">[1](https://stackoverflow.com/questions/4792823/java-packages-vs-c-libraries)</span> <span class="inline-links">[2](https://stackoverflow.com/questions/2108172/c-namespaces-comparison-to-java-packages)</span>.
 
-So we can see the **key purpose of namespaces** in software engineering as **allowing us to scope identifiers (i.e. variables, functions, classes etc.) and prevent name collisions** as a project becomes larger and requires better structure.
+We can see that the **key purpose of namespaces** in software engineering isto **allow developers to assign a scope to identifiers (i.e. variables, functions, classes etc.) and prevent name collisions** as a project becomes larger and requires better structure.
 
-However, even with the introduction of namespaces a lazy programmer can end up polluting the global namespace through the ```using``` directive. This causes the same name clashing issues we would have had without namespaces. This is especially problematic with C++, whose standard library has become bloated over the past few versions. Consider the following snippet of code which compiles just fine up until C++14 but fails in C++17 - **this minor issue could result in decades worth of code having to be refactored!**
+Yet even with the introduction of namespaces a lazy programmer can end up polluting the global namespace through the ```using``` directive. This causes the same name clashing issues we would have had without namespaces. This is especially problematic with C++, whose standard library has become quite bloated over the past few versions. Consider the following snippet of code which compiles just fine up until C++14 but fails in C++17 - **this minor issue could result in decades worth of code having to be refactored!**
 
 ``` c++
 >>> cat test_bytes.cpp
@@ -163,7 +163,7 @@ int main() {
 }
 ```
 
-The worst case scenario I can think of here is ```using``` an entire namespace from a header file such that **all the identifiers within the namespace becomes part of the published API.** 
+The worst case scenario I can think of here is ```using``` an entire namespace from a header file such that **all the identifiers within the namespace end up as part of a published API.** 
 
 ### Back to the problem - Python 
 Unlike Java and C++, name clashes in Python cannot be resolved until runtime since Python is an interpreter language. 
@@ -175,7 +175,7 @@ Python has its own unique take on namespacing and scope resolution.
 
 {% include techquote.html quote="A namespace is a mapping from (identifier) names to objects. Most namespaces are <u>currently implemented as Python dictionaries</u>..." footer="Python Documentation - 9.2 Scopes and Namespaces" %}
 
-Moreover, given that the **keys of a dictionary form a set**, i.e. keys must be unique, **this ensures that all identifiers in a namespace are unique** (which I think is quite nice).
+Moreover, given that the **keys of a dictionary form a set**, i.e. keys must be unique, **this ensures that all identifiers in a namespace are unique** (which I think is quite neat).
 
 Examples of namespaces in Python would be the set of **builtin names** ```__builtins__```, containing all of Python's out-of-the-box functions such as ```sum()``` or ```list()```, the **global names**, such as global identifiers or imports at the top of a Python file, and **local names** which we find within a code block, such as a for loop variable[^for_loop_scope] or the local variables of a function[^object_namespaces]. All the identifiers which are found after executing an ```import``` statement at the top of a Python file end up in the global namespace. Consider the example given at the beginning of this article:
 
@@ -288,15 +288,16 @@ True
 ```
 
 ### TL;DR?
-Just use fully qualified explicit imports.
+**Just use fully qualified explicit imports!** *Please.*
 
 
 #### References
-- https://www.tutorialspoint.com/compiler_design/compiler_design_phases_of_compiler.htm
-- https://openjdk.java.net/groups/compiler/doc/compilation-overview/index.html
-- Java in a nutshell by Benjamin J. Evans & David Flanagan - Importing Types page 90 - 95
+- <span class="inline-links">[Phases of Compiler Design](https://www.tutorialspoint.com/compiler_design/compiler_design_phases_of_compiler.htm)</span> - Tutorialspoint
+- <span class="inline-links">[Java Compilation overview](https://openjdk.java.net/groups/compiler/doc/compilation-overview/index.html)</span> OpenJDK
+- Java in a Nutshell by Benjamin J. Evans & David Flanagan - Importing Types page 90 - 95
 - The C++ programming language by Bjarne Stroustrup - Chapter 8 Namespaces and Exceptions
-- Using anonymous namespaces over static global
-- https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces - Scopes and Namespaces in Python
-- Name mangling in Python
 - Learning Python 5th Edition by Mark Lutz - Chapter 17: Scope
+- <span class="inline-links">[Scopes and Namespaces in Python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces)</span> - Python Documentation
+- <span class="inline-links">[Role of Underscore\(\_\) in Python](Role of Underscore(_) in Python)</span> from the DataCamp blog
+
+---

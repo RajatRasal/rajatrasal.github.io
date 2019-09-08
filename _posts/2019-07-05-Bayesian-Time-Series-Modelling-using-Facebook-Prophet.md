@@ -55,7 +55,8 @@ model.plot_components(forecast)
 ```
 <figure align="center">
   <img src="{{ site.url }}/assets/images/prophet_plot_components.png" height="400px" width="600px" alt="Components of the model">
-  <figcaption>Prophet allows us to view the different components of the data which it has learnt.</figcaption>
+  <figcaption>Prophet allows us to view the different components of the data which it has learnt.
+  </figcaption>
 </figure>
 
 Prophet also produces an error bound under the ```yhat_lower``` and ```yhat_upper``` fields in the forecast dataframe. The expected forecast is under ```yhat```.
@@ -73,7 +74,8 @@ plt.show()
 ```
 <figure align="center">
   <img src="{{ site.url }}/assets/images/prophet_forecast.png" height="150px" width="600px" alt="Components of the model">
-  <figcaption>Forecast from Prophet model</figcaption>
+  <figcaption>Forecast from Prophet model
+  </figcaption>
 </figure>
 
 ##### Example: AAPL Stock Prices 
@@ -87,7 +89,8 @@ If we run Prophet with only weekly and yearly regressors, we get the following m
 
 <figure align="center">
   <img src="{{ site.url }}/assets/images/bayesian_time_series/ootb_prophet_aapl_prediction.png" height="320px" width="100%" alt="Out of the box model with yearly and weekly regressors">
-  <figcaption>SMAPE: 5.09, RSME: 3.21</figcaption>
+  <figcaption>SMAPE: 5.09, RSME: 3.21
+  </figcaption>
 </figure>
 
 The most obvious exogenous factor that I thought would contribute to AAPL stock fluctuations would be the (potential) launch of a new product. These would be indiciated by the dates of Apple's annual developers conference, where such announced tend to be made. So I decided to scrape a Wikipedia page for the appropriate dates and factor those into the model as changepoints, which can be done directly though Prophet's interface. Prophet also allows you to factor regional holidays into the model, and includes regressors for each of these. There may be a spike in Apple product sales during holidays in key regions such as the UK, US and China. With more regressors we do get a spikier model, but this could easily smoothed by fitting a polynomial (```np.polyfit```) curve, a Fourier series or spline curves through it. Regardless, we see an increase in the performance metrics and better fitting of peaks and troughs of the original curve. 
@@ -120,7 +123,8 @@ model.fit(train_df)
 
 <figure align="center">
   <img src="{{ site.url }}/assets/images/bayesian_time_series/changepoints_prophet_aapl_prediction.png" height="320px" width="100%" alt="Out of the box model with yearly and weekly regressors">
-  <figcaption>SMAPE: 3.69, RSME: 2.57</figcaption>
+  <figcaption>SMAPE: 3.69, RSME: 2.57
+  </figcaption>
 </figure>
 
 I wanted to include iPhone sales statistics as another factor to regress on, as I felt this would directly impact AAPL's stock price, however this data was very difficult to collect. Instead I have opted for using Google search trends for the term 'iPhone'. Hopefully this would serve as a meaningful factor when quantifying the popularity of Apple products. This resulted in slightly worse performace metrics. Although the result better fit the upward trend of the AAPL stock price, it didn't consider the occasional dip. This may be because when Apple gets negative press, their search results may still increase although their stock price would decrease.
@@ -134,7 +138,8 @@ model.fit(train_df)
 
 <figure align="center">
   <img src="{{ site.url }}/assets/images/bayesian_time_series/searches_prophet_aapl_prediction.png" height="320px" width="100%" alt="Out of the box model with yearly and weekly regressors">
-  <figcaption>SMAPE: 3.72, RSME: 2.63</figcaption>
+  <figcaption>SMAPE: 3.72, RSME: 2.63
+  </figcaption>
 </figure>
 
 
