@@ -273,7 +273,7 @@ figcaption {
     font-weight: 700;
     color: darken($blockquote-shade, 15%);
     text-align: right;
-    margin-top: -15px;
+    /* margin-top: 0px; */
 
     &:before {
       content: '\2015';
