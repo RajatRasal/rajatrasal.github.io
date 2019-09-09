@@ -7,7 +7,7 @@ I am a 2nd year student currently studying **Computing at Imperial College Londo
  
 When I'm coding, I'll almost always be using **Python** and **Bash** (in <a class="inline-links" href="https://github.com/RajatRasal/vimrc">VIM</a>), but I have used a wide range of other programming languages and tools since **I started programming around 6 years ago**. These range from using cloud and big data technologies, such as **GCP and Hadoop**, and DevOps technologies, **Docker and Kubernetes**, to **JAVA** for most of my university projects and **C++ and C** for low level things, amongst many others. Web dev is fun too (I'm loving <a class="inline-links" href="https://medium.com/javascript-scene/the-typescript-tax-132ff4cb175b">Typescript</a> at the moment).
 
-I would say I'm a full-stack developer with a good understanding of machine learning and data science concepts.
+I would say I'm a full-stack developer with a good understanding of machine learning, data science, big data and DevOps concepts.
 
 ##### Experience
 After working under <a class="inline-links" href="https://www.imperial.ac.uk/people/g.gorman">Gerard Gorman</a> and <a class="inline-links" href="https://www.imperial.ac.uk/people/p.kelly">Paul Kelly</a> at **IC last summer as a software research intern**, I became very interested in Machine Learning and Data Science. This was in part due to Gerard letting me borrow his copy of <a class="inline-links" href="https://www.amazon.co.uk/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291">"Hands-On Machine Learning with Scikit-Learn and TensorFlow" by Aurélien Géron</a> (which I am yet to return) [^keras], which is an absolutely amazing book. 
