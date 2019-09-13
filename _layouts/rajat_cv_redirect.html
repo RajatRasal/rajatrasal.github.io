@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    {% include google_analytics.html %}
+    {% include meta.html %}
+    <title>{{ page.title }}</title>
+    {% include style.html %}
+  {% for image in site.static_files %}
+    {% if image.name contains 'rajat_cv' %}
+    <meta http-equiv="refresh" content="0; URL={{ image.path }}"/>
+    {% endif %}
+  {% endfor %}
+  </head>
+  <body>
+    {% include gtm_body.html %}
+    <div class="container">
+      <header class="masthead" align="center">
+        {% include title.html %}
+        {% include navigation.html %}
+      </header>
+      <div class="container content">
+        {{ content }}
+      </div>
+      <footer class="footer" align="center">
+        <div class="container">
+          {% include contact.html %}
+        </div>
+      </footer>
+      {% include script.html %}
+    </div>
+  </body>
+</html>
