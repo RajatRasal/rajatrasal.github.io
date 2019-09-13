@@ -1,8 +1,8 @@
-<div class="cv-icon">
+<div class="cv-ic">
   {% for image in site.static_files %}
     {% if image.name contains 'rajat_cv' %}
     <a href="{{ image.path }}" class="cv-ic">
-      <i class="far fa-file-alt fa-2x footer-ic"></i>
+      <i class="far fa-file-alt fa-2x footer-ic" class="cv-ic"></i>
     </a>
     {% endif %}
   {% endfor %}
