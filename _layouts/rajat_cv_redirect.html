@@ -7,7 +7,7 @@
     {% include style.html %}
   <meta name="title" property="og:title" content="Rajat's CV"/>
   <meta name="url" property="og:url" content="https://rajatrasal.github.io/rajat_cv.html"/>
-  <meta name="image" property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Intercontinental_Champion_THE_ROCK.jpg/170px-Intercontinental_Champion_THE_ROCK.jpg"/>
+  <meta name="image" property="og:image" content="{{ site.url }}/assets/images/rajat_cv_preview.jpg" />
   <meta name="description" property=”og:description” content="I am a 3rd year MEng Computing student at Imperial College London. Currently looking for interesting things to do next summer. This is a link to my CV. Check it out!"/>
   {% for image in site.static_files %}
     {% if image.name contains 'rajat_cv' %}
