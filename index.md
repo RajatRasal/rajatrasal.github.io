@@ -6,7 +6,7 @@ title: Rajat
 
 <br>
 
-<h5><u>Pic of the Day:</u></h5>
+<h5 align="center"><u>Pic of the Day:</u></h5>
 
 <div class="picOfTheDayHolder" align="center"></div>
 
