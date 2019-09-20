@@ -1,11 +1,25 @@
-function getImageOfTheDay() {
-  console.log('GETTING IMAGE');
-  const Http = new XMLHttpRequest();
-  const url='https://us-central1-my-blog-253414.cloudfunctions.net/get_image_from_bucket';
-  Http.open("GET", url);
-  Http.send();
+function getAndSetImageOfTheDay() {
+  const url = 'https://us-central1-my-blog-253414.cloudfunctions.net/get_image_from_bucket';
 
-  Http.onreadystatechange = (e) => {
-    console.log(Http.responseText)
-  }
+  var setPic = function(image) { 
+    var picOfTheDay = document.getElementsByClassName('picOfTheDayHolder')[0];
+    newImg = document.createElement('img');
+    newImg.className = 'picOfTheDay';
+    newImg.src = image;
+    picOfTheDay.appendChild(newImg)
+  };
+
+  fetch(url, {mode: 'cors'})
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(image) {
+      console.log('Request successful', text);
+      setPic(image);
+    })
+    .catch(function(error) {
+      console.log('Request failed', error) 
+      const image = "https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg"
+      setPic(image);
+    });
 }
