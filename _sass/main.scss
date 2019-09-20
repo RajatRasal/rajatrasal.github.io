@@ -294,10 +294,56 @@ figcaption {
   }
 }
 
-.picOfTheDay {
+/* Gallery Image Display */
+/* Inspired by https://blog.joemcnally.com/ */
+.picture-otd {
   display: block;
-  max-width: 100%;
+  max-width: 90%;
   max-height: 500px;
   width: auto;
   height: auto;
+}
+
+.picture-otd-holder {
+  position: relative;
+}
+
+.image-information {
+  color: #fff;
+  position: absolute;
+  text-shadow: 0 0 2px #000, 0 0 8px #000;
+  width: 100%;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* transform: translateY(-35%); */
+}
+
+.index-page {
+  font-size: 18px;
+  transition: 0.5s, transform;
+  @media screen and (min-width: 768px) {
+    font-size: 22px; 
+  }
+}
+
+.image-information > h4 {
+  transition: 0.5s, transform;
+  @media screen and (max-width: 560px) {
+    font-size: 15px !important;
+    margin-bottom: 0;
+  }
+  @media screen and (min-width: 560px) {
+    font-size: 22px; 
+  }
+}
+
+.image-information > .image-date {
+  transition: 0.5s, transform;
+  @media screen and (max-width: 560px) {
+    font-size: 10px !important;
+  }
+  @media screen and (min-width: 560px) {
+    font-size: 18px; 
+  }
 }
