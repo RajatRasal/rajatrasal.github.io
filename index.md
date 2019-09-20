@@ -13,3 +13,13 @@ title: Rajat
   {% endif %}
 {% endfor %}
 </div>
+
+<br>
+
+<div align="center">
+  <!--img src="https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg" width="120" height="120"-->
+</div>
+
+<script type="text/javascript">
+   getImageOfTheDay(); 
+</script>
