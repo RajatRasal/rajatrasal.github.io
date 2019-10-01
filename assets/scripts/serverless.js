@@ -12,9 +12,11 @@ function Loader(props) {
 
 function PictureHolder(props) {
   console.log(props.image);
+  const image_url = props.image;
+  console.log('URL: ' + image_url);
   return (
     <div>
-      <img className='picture-otd' src={props.image_url} />
+      <img className='picture-otd' src={image_url} />
       <span className='image-information'>
         <h4>{props.desc}</h4>
         <span className='image-date'>{props.date}</span>
@@ -35,8 +37,9 @@ function getAndSetHomepageImage() {
     })
     .then(function(image) {
       console.log('Request successful', image);
+      const image_url = image["image_url"];
       ReactDOM.render(
-        <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={image}/>,
+        <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={image_url}/>,
         picOfTheDayHolder
       );
     })
