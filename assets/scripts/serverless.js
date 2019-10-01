@@ -41,7 +41,7 @@ function getAndSetHomepageImage() {
       // console.log(typeof jsonResponse);
       // console.log(jsonResponse);
       console.log(jsonResponse.image_url);
-      const imageURL = jsonResponse.image_url;
+      const imageUrl = jsonResponse.image_url;
 	    /*
       jsonResponse.json().then(data => {
         console.log('data: ' + data);
