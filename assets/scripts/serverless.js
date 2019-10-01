@@ -11,6 +11,7 @@ function Loader(props) {
 }
 
 function PictureHolder(props) {
+  console.log(props.image);
   return (
     <div>
       <img className='picture-otd' src={props.image}/>
