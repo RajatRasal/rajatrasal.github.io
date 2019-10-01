@@ -35,8 +35,12 @@ function getAndSetHomepageImage() {
     .then(function(response) {
 	    console.log(response);
 	    console.log(typeof response);
-	    console.log(response['image_url']);
-      const imageUrl = response.image_url;
+	    // console.log(response['image_url']);
+	    response.json().then(data => {
+	    console.log(data);
+	    console.log(typeof data);
+	    console.log(data['image_url']);
+      const imageUrl = data.image_url;
       ReactDOM.render(
         <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
         picOfTheDayHolder
