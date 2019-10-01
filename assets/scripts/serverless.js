@@ -35,7 +35,6 @@ function getAndSetHomepageImage() {
     .then(function(response) {
 	    console.log(response);
 	    console.log(typeof response);
-	    // console.log(response['image_url']);
 	    response.json().then(data => {
 	    console.log(data);
 	    console.log(typeof data);
@@ -44,8 +43,7 @@ function getAndSetHomepageImage() {
       ReactDOM.render(
         <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
         picOfTheDayHolder
-      ); 
-    })
+      );})})
     .catch(function(error) {
       console.log('Request failed', error) 
       const defaultImage = "https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg";
