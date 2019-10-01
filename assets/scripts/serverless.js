@@ -35,14 +35,22 @@ function getAndSetHomepageImage() {
     .then(function(response) {
       return response.text();
     })
-    .then(function(image) {
-      console.log('Request successful', image);
-      const image_url = image["image_url"];
+    .then(function(response) {
+      response.json().then(data => {
+        console.log('data: ' + data);
+        const image_url = data['image_url'];
+        console.log('image url: ' + image_url);
+        ReactDOM.render(
+          <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={image_url}/>,
+          picOfTheDayHolder
+	); 
+      });
+      /*
+      console.log('Request successful', response);
+      const image_url = response["image_url"];
       console.log('Image URL: ', image_url);
-      ReactDOM.render(
-        <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={image_url}/>,
-        picOfTheDayHolder
-      );
+      console.log('Image URL: ', image);
+      */
     })
     .catch(function(error) {
       console.log('Request failed', error) 
