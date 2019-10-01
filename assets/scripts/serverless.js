@@ -33,7 +33,7 @@ function getAndSetHomepageImage() {
 
   fetch(url, {mode: 'cors'})
     .then(function(response) {
-      const imageUrl = jsonResponse.image_url;
+      const imageUrl = response.image_url;
       ReactDOM.render(
         <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
         picOfTheDayHolder
