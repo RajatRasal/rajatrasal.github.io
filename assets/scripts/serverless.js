@@ -33,6 +33,9 @@ function getAndSetHomepageImage() {
 
   fetch(url, {mode: 'cors'})
     .then(function(response) {
+	    console.log(response);
+	    console.log(typeof response);
+	    console.log(response['image_url']);
       const imageUrl = response.image_url;
       ReactDOM.render(
         <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
