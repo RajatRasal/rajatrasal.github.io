@@ -14,7 +14,7 @@ function PictureHolder(props) {
   console.log(props.image);
   return (
     <div>
-      <img className='picture-otd' src={props.image} />
+      <img className='picture-otd' src={props.image_url} />
       <span className='image-information'>
         <h4>{props.desc}</h4>
         <span className='image-date'>{props.date}</span>
