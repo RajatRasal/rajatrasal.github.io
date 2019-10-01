@@ -35,13 +35,13 @@ function getAndSetHomepageImage() {
     .then(function(response) {
       return response.text();
     })
-    .then(function(response) {
-      response.json().then(data => {
+    .then(function(imageResponse) {
+      imageResponse.json().then(data => {
         console.log('data: ' + data);
-        const image_url = data['image_url'];
-        console.log('image url: ' + image_url);
+        const imageUrl = data['image_url'];
+        console.log('image url: ' + imageUrl);
         ReactDOM.render(
-          <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={image_url}/>,
+          <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
           picOfTheDayHolder
 	); 
       });
