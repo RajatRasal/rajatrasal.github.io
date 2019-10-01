@@ -5,8 +5,11 @@
     {% include meta.html %}
     <title>{{ page.title }}</title>
     {% include style.html %}
-    <script type="text/javascript" src="{{ site.url }}/assets/scripts/serverless.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" src="{{ site.url }}/assets/scripts/serverless.js"></script>
   </head>
   <body>
     {% include gtm_body.html %}
@@ -23,7 +26,7 @@
           {% include contact.html %}
         </div>
       </footer>
-      {% include script.html %}
     </div>
+    {% include script.html %}
   </body>
 </html>

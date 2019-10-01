@@ -1,52 +1,52 @@
-function getAndSetImageOfTheDay() {
+'use strict';
+
+function Loader(props) {
+  return (
+    <div className="d-flex justify-content-center mt-2">
+      <div className="spinner-border spinner-border-lg" style={{width: '3rem', height: '3rem'}} role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+  );
+}
+
+function PictureHolder(props) {
+  return (
+    <div>
+      <img className='picture-otd' src={props.image}/>
+      <span className='image-information'>
+        <h4>{props.desc}</h4>
+        <span className='image-date'>{props.date}</span>
+      </span>
+    </div>
+  );
+}
+
+function getAndSetHomepageImage() {
   const url = 'https://europe-west2-my-blog-253414.cloudfunctions.net/get_image_from_bucket';
+  const picOfTheDayHolder = document.getElementsByClassName('picture-otd-holder')[0];
 
-  var setPic = function(image, desc, date) { 
-    console.log('Image:' + image);
-    console.log('Desc:' + desc);
-    console.log('Date:' + date);
-    var picOfTheDayHolder = document.getElementsByClassName('picture-otd-holder')[0];
-
-    /* New Image */
-    newImg = document.createElement('img');
-    newImg.className = 'picture-otd';
-    newImg.src = image;
-
-    /* New Image Description */
-    postInfo = document.createElement('span');
-    postInfo.className = 'image-information';  // index-page';
-    /* Image Description */
-    postInfoHeading = document.createElement('h4');
-    postInfoHeading.innerHTML = desc;
-    /* Image Date */
-    postInfoDate = document.createElement('span');
-    postInfoDate.className = 'image-date';
-    postInfoDate.innerHTML = date;
-
-    /* Inserting all new elements in the right places */
-    picOfTheDayHolder.appendChild(newImg)
-    picOfTheDayHolder.appendChild(postInfo)
-    postInfo.appendChild(postInfoHeading);
-    postInfo.appendChild(postInfoDate);
-
-	  /*
-	  <span class="post-information"><h3>Sunrise in the Forest! Sort of…..</h3> <span class="date"> July 8, 2019 </span> </span>
-	  */
-  };
+  ReactDOM.render(<Loader/>, picOfTheDayHolder);
 
   fetch(url, {mode: 'cors'})
     .then(function(response) {
       return response.text();
     })
     .then(function(image) {
-      console.log('Request successful', text);
-      setPic(image, 'tmp-placeholder', 'date-placeholder');
+      console.log('Request successful', image);
+      ReactDOM.render(
+        <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={image}/>,
+        picOfTheDayHolder
+      );
     })
     .catch(function(error) {
       console.log('Request failed', error) 
-      const image = "https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg"
-      const desc = "Cat Staring out of the Window"
-      const date = "July 2018"
-      setPic(image, desc, date);
+      const defaultImage = "/assets/images/staring_cat.jpg";
+      const desc = "Cat Staring out of the Window";
+      const date = "July 2018";
+      ReactDOM.render(
+        <PictureHolder desc={desc} date={date} image={defaultImage}/>,
+        picOfTheDayHolder
+     );
     });
 }

@@ -6,9 +6,8 @@ title: Rajat
 
 <br>
 
-<!--h5 align="center index-page" align="center"><u>A pic from my gallery:</u></h5-->
 <div class="picture-otd-holder" align="center"></div>
 
-<script type="text/javascript">
-   getAndSetImageOfTheDay(); 
+<script type="text/babel">
+   getAndSetHomepageImage(); 
 </script>
