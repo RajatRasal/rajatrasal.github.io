@@ -14,7 +14,7 @@ function PictureHolder(props) {
   console.log(props.image);
   return (
     <div>
-      <img className='picture-otd' src={props.image}/>
+      <img className='picture-otd' src={props.image} />
       <span className='image-information'>
         <h4>{props.desc}</h4>
         <span className='image-date'>{props.date}</span>
@@ -42,7 +42,8 @@ function getAndSetHomepageImage() {
     })
     .catch(function(error) {
       console.log('Request failed', error) 
-      const defaultImage = "/assets/images/staring_cat.jpg";
+      // const defaultImage = "/assets/images/staring_cat.jpg";
+      const defaultImage = "https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg"; //"/assets/images/staring_cat.jpg";
       const desc = "Cat Staring out of the Window";
       const date = "July 2018";
       ReactDOM.render(
