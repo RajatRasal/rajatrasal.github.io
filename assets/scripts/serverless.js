@@ -33,37 +33,15 @@ function getAndSetHomepageImage() {
 
   fetch(url, {mode: 'cors'})
     .then(function(response) {
-      return response.text();
-    })
-    .then(function(response) {
-      console.log(typeof response);
-      const jsonResponse = JSON.parse(response);
-      // console.log(typeof jsonResponse);
-      // console.log(jsonResponse);
-      console.log(jsonResponse.image_url);
       const imageUrl = jsonResponse.image_url;
-	    /*
-      jsonResponse.json().then(data => {
-        console.log('data: ' + data);
-        const imageUrl = data['image_url'];
-        console.log('image url: ' + imageUrl);
-	*/
-        ReactDOM.render(
-          <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
-          picOfTheDayHolder
-	); 
-      /*
-      });
-      console.log('Request successful', response);
-      const image_url = response["image_url"];
-      console.log('Image URL: ', image_url);
-      console.log('Image URL: ', image);
-      */
+      ReactDOM.render(
+        <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
+        picOfTheDayHolder
+      ); 
     })
     .catch(function(error) {
       console.log('Request failed', error) 
-      // const defaultImage = "/assets/images/staring_cat.jpg";
-      const defaultImage = "https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg"; //"/assets/images/staring_cat.jpg";
+      const defaultImage = "https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg";
       const desc = "Cat Staring out of the Window";
       const date = "July 2018";
       ReactDOM.render(
