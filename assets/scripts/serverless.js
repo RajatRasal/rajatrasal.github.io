@@ -25,12 +25,13 @@ function PictureHolder(props) {
   );
 }
 
-function getAndSetHomepageImage() {
+function getHomepageImage() {
   const url = 'https://europe-west2-my-blog-253414.cloudfunctions.net/get_image_from_bucket';
   const picOfTheDayHolder = document.getElementsByClassName('picture-otd-holder')[0];
 
   ReactDOM.render(<Loader/>, picOfTheDayHolder);
 
+  try {
   fetch(url, {mode: 'cors'})
     .then(function(response) {
 	    console.log(response);
@@ -54,4 +55,8 @@ function getAndSetHomepageImage() {
         picOfTheDayHolder
      );
     });
+  }
+  catch {
+    console.log('CAUGHT');
+  }
 }

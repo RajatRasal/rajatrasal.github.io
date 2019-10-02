@@ -8,6 +8,7 @@ title: Rajat
 
 <div class="picture-otd-holder" align="center"></div>
 
-<script type="text/babel">
-   getAndSetHomepageImage(); 
+<script type="text/javascript">
+console.log('Homepage loaded');
+   getHomepageImage(); 
 </script>
