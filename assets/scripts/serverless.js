@@ -60,3 +60,5 @@ function getHomepageImage() {
     console.log('CAUGHT');
   }
 }
+
+getHomepageImage();
