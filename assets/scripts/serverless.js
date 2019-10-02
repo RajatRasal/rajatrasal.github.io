@@ -41,8 +41,10 @@ function getHomepageImage() {
 	    console.log(typeof data);
 	    console.log(data['image_url']);
       const imageUrl = data.image_url;
+      const imageDesc = data.desc;
+      const imageDate = data.date;
       ReactDOM.render(
-        <PictureHolder desc='tmp-placeholder' date='date-placeholder' image={imageUrl}/>,
+        <PictureHolder desc={imageDesc} date={imageDate} image={imageUrl}/>,
         picOfTheDayHolder
       );})})
     .catch(function(error) {
@@ -55,8 +57,7 @@ function getHomepageImage() {
         picOfTheDayHolder
      );
     });
-  }
-  catch {
+  }catch {
     console.log('CAUGHT');
   }
 }
