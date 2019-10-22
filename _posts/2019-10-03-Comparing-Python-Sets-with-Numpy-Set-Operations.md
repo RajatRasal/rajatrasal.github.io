@@ -31,7 +31,8 @@ Ndarrays implement a strided view of memory. So the same block of contiguously o
 Although numpy doesn't offer a set data structure on top of ndarrays, we can still efficiently perform set operations on the data that we are indexing. This is mainly due to the highly efficient vectorised functions numpy can perform. For this reason, Numpy's [one-dimensional set intersection](https://docs.scipy.org/doc/numpy/reference/generated/numpy.intersect1d.html) implementation is quite unintuitive when compared to the simplicity of the builtin CPython one. I have once again presented a simplified implementation below - [production code](https://github.com/numpy/numpy/blob/v1.17.0/numpy/lib/arraysetops.py#L335-L429).
 
 <script src="https://gist.github.com/RajatRasal/bdda5deda3455e891adf4acf90bc96ea.js"></script>
-- use pdb or ipython to show line by line
+
+<iframe width="100%" height="400" src="https://nbviewer.jupyter.org/github/RajatRasal/rajatrasal.github.io/blob/master/assets/files/Intersection%20of%20Sets%20-%20Numpy.ipynb#"></iframe>
 
 Discuss runtime - behaviour of concat function (does it copy or not) and which type of sort is being used. Discuss how this implementation extends to the other one-dimensional set functions in numpy also. We could therefore say that ```np.intersect1d(a, b)``` $$ \in O(len(a) + len(b))$$, suggesting that numpy's set intersection would be faster than Python's. **In practice, this turns out to be wrong...**
 
