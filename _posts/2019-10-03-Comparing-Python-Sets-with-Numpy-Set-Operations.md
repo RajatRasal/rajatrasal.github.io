@@ -17,24 +17,23 @@ For this reason, the set implementation shares a lot of its code with the ```dic
 
 [^optimisations]: The implementation of the Python dictionary is known for its simplicity. It has some simple optimisations which have been shown to improve performance based on 'real-life benchmarking' (Chapter 18 - Beautiful Code, Oram et al.). Some of these include collision prevention algorithms, table resizing policies and using a free list of previously ```malloc```ed dictionary structs.
 
-- Set struct
+Take <span class='inline-links'>[set intersection](https://wiki.python.org/moin/TimeComplexity)</span> ```x.intersection(y)``` $$\equiv x \cap y \in O(len(x) * len(y))$$; this operation offers us a clean way to check the membership of a set $$x$$ from a set $$y$$. The <span class="inline-links">[CPython interpreter](https://github.com/python/cpython/blob/master/Objects/setobject.c)</span> implements this operations simply by checking whether each entry in y is in x and returning a new set with the intersecting values. I have removed some of the control flow and referencing counting functions calls from the <span class="inline-links">[production code](https://github.com/python/cpython/blob/master/Objects/setobject.c)</span> and presented a simplified implementation below [^Note_about_inputs]. 
 
-Take <span class='inline-links'>[set intersection](https://wiki.python.org/moin/TimeComplexity)</span> ```x.intersection(y)``` $$\equiv x \cap y \in O(len(x) * len(y))$$; this operation offers us a clean way to check the membership of a set $$x$$ from a set $$y$$. The <span class="inline-links">[CPython interpreter](https://github.com/python/cpython/blob/master/Objects/setobject.c)</span> implements this operations simply by checking whether each entry in y is in x and returning a new set with the intersecting values. 
+[^Note_about_inputs]: Set operations can be performed between a set and another iterable but the simplified implementation I have provided only works for two sets.
 
-- implementations details or gist
-- use pdb or ipython to show line by line
+<script src="https://gist.github.com/RajatRasal/ad2727610e49724de511544ff4535762.js"></script>
 
 #### Numpy Arrays
-Ndarrays implement a strided view of memory. So the same block of contiguously allocated data can be viewed differently by changing how the ndarray structure points to the underlying data. We do this by changing the number of bytes needed to reach the next element in an array, i.e. the strides of that array. We can think of ndarrays are more of a **wrapper for a contiguous block of memory**.
+Ndarrays implement a strided view of memory. So the same block of contiguously or non-contiguously allocated elements in contiguous block of memory can be accessed *differently* by changing how the numpy iterates over it. We do this by changing the number of bytes needed to reach the *next* element in an array, i.e. the size of the stride from one element to the next. 
  
-- Give ipython example
 - Diagram
 
-Although numpy doesn't offer a set data structure on top of ndarrays, we can still efficiently perform set operations on the data that we are indexing. This is mainly due to the highly efficient vectorised functions numpy can perform. For this reason, Numpy's [one-dimensional set intersection](https://docs.scipy.org/doc/numpy/reference/generated/numpy.intersect1d.html) implementation is quite unintuitive. I have removed some of the control flow from the [production code](https://github.com/numpy/numpy/blob/v1.17.0/numpy/lib/arraysetops.py#L335-L429) and presented a simplified version below.
+Although numpy doesn't offer a set data structure on top of ndarrays, we can still efficiently perform set operations on the data that we are indexing. This is mainly due to the highly efficient vectorised functions numpy can perform. For this reason, Numpy's [one-dimensional set intersection](https://docs.scipy.org/doc/numpy/reference/generated/numpy.intersect1d.html) implementation is quite unintuitive when compared to the simplicity of the builtin CPython one. I have once again presented a simplified implementation below - [production code](https://github.com/numpy/numpy/blob/v1.17.0/numpy/lib/arraysetops.py#L335-L429).
 
-- simplified code
+<script src="https://gist.github.com/RajatRasal/bdda5deda3455e891adf4acf90bc96ea.js"></script>
+- use pdb or ipython to show line by line
 
-Discuss runtime - behaviour of concat function and which type of sort is being used. Discuss how this implementation extends to the other one-dimensional set functions in numpy also.
+Discuss runtime - behaviour of concat function (does it copy or not) and which type of sort is being used. Discuss how this implementation extends to the other one-dimensional set functions in numpy also. We could therefore say that ```np.intersect1d(a, b)``` $$ \in O(len(a) + len(b))$$, suggesting that numpy's set intersection would be faster than Python's. **In practice, this turns out to be wrong...**
 
 #### An experiment - Needles in a haystack
 As a result, numpy set operators result tend to be comparable but very slightly slower in terms of speed to the builtin set.
