@@ -2,8 +2,11 @@
 layout: default
 title: Rajat
 ---
-<h5 class="index-page">😎<span class="not-error">Welcome to my blog!</span>🧐 As you can see this whole thing is <span class="error">still under construction</span> but feel free to browse around anyways.</h5>
-
+<div class="index-page">
+<h5>
+😎<span class="not-error">Welcome to my tech blog!</span>🧐
+</h5>
+<small>To see another picture below <span class="error">refresh the page</span>.</small>
+</div>
 <br>
-
 <div class="picture-otd-holder" align="center"></div>
