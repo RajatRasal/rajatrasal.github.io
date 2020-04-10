@@ -320,7 +320,7 @@ figcaption {
 }
 
 .index-page {
-  text-align: center;
+  text-align: center !important;
   font-size: 18px;
   transition: 0.5s, transform;
   @media screen and (min-width: 768px) {
