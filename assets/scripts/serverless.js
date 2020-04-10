@@ -25,28 +25,25 @@ function PictureHolder(props) {
   );
 }
 
-function getHomepageImage() {
+function getHomepageImage(img_holder) {
   const url = 'https://europe-west2-my-blog-253414.cloudfunctions.net/get_image_from_bucket';
-  const picOfTheDayHolder = document.getElementsByClassName('picture-otd-holder')[0];
+  const picOfTheDayHolder = document.getElementById(img_holder);
 
   ReactDOM.render(<Loader/>, picOfTheDayHolder);
 
   try {
   fetch(url, {mode: 'cors'})
     .then(function(response) {
-	    console.log(response);
-	    console.log(typeof response);
-	    response.json().then(data => {
-	    console.log(data);
-	    console.log(typeof data);
-	    console.log(data['image_url']);
-      const imageUrl = data.image_url;
-      const imageDesc = data.desc;
-      const imageDate = data.date;
-      ReactDOM.render(
-        <PictureHolder desc={imageDesc} date={imageDate} image={imageUrl}/>,
-        picOfTheDayHolder
-      );})})
+      response.json().then(data => {
+        const imageUrl = data.image_url;
+        const imageDesc = data.desc;
+        const imageDate = data.date;
+        ReactDOM.render(
+          <PictureHolder desc={imageDesc} date={imageDate} image={imageUrl}/>,
+          picOfTheDayHolder
+        );
+      })
+    })
     .catch(function(error) {
       console.log('Request failed', error) 
       const defaultImage = "https://storage.cloud.google.com/blog-image-gallery/staring_cat.jpg";
@@ -57,9 +54,11 @@ function getHomepageImage() {
         picOfTheDayHolder
      );
     });
-  }catch {
+  } catch {
     console.log('CAUGHT');
   }
 }
 
-getHomepageImage();
+$(document).ready(function() {
+  getHomepageImage('picture-holder');
+});
