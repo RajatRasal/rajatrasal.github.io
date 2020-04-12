@@ -6,18 +6,20 @@ title: Python Image API using Google Cloud Functions
 type: blog 
 ---
 #### Overview
-I've summarised the architecture for the image display in the diagram below:
+<figure align="center">
+  <img src="{{site.url}}/assets/images/image_gallery_article/architecture.jpg"
+       class="img_responsive" alt="System architecture"
+       style="max-width: 75%; display: block; margin-left: auto; margin-right: auto;">
+ <figcaption>System Architecture diagram for the my image selector API</figcaption>
+</figure>
+{:start="0"}
 0. I've manually uploaded a bunch of images to a GCP storage bucket.
-1. Make a call to the GCP Cloud Function endpoint.
+1. The frontend makes a call to the GCP Cloud Function endpoint.
 2. The function requests a list of all the images from the storage bucket.
-3. The storage API returns the list of images URLs.
-4. An image is randomly choosen and its URL is sent to the frontend.
-5. The browser can request the image directly from the bucket.
-6. The image is returned and displayed in the webpage. 
-
-<img src="{{site.url}}/assets/images/image_gallery_article/architecture.jpg"
-class="img_responsive" alt="System architecture"
-style="max-width: 75%; display: block; margin-left: auto; margin-right: auto;">
+3. The storage API returns the list of image filenames.
+4. A filename is randomly choosen and sent to the frontend.
+5. The frontend can now request the image file directly using the storage buckets API.
+6. An image is returned and displayed in the browser.
 
 #### Serverless Cloud Functions
 
