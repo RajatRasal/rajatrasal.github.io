@@ -64,48 +64,49 @@ I manually dragged and dropped each image into a GCP storage bucket. I've also i
 </figure>
 
 #### Google Cloud Functions
-I wrote a simple Python script to randomly select an image from the storage bucket.  
+I now needed to setup an API which I could use to access an image in the ```blog-image-gallery``` bucket. Time for a serverless function! From my experience, the easiest way to deploy a serverless function is using Google's Cloud Functions. When compared to AWS Lambda, Cloud Functions are far quicker to set up both from the CLI and directly through the online console. GCP's console also provides far fewers configurable options than AWS, so you can setup a basic Python or Node.js API runtime without needing to read (or understand) swathes of documentation. Since the API is doing such minimal computations, the cost incurred from it over the last year has been negligible.
+
+I wrote a Python Cloud Function ```choose_image``` to randomly select an image from the storage bucket. Cloud Functions which use the Python runtime handle HTTP requests through Flask. So all inputs to Cloud Functions are therefore Flask HTTP requests and all outputs should be Flask HTTP responses. For this reason, I also included a small Flask app in the project repo ```server.py``` to easily test the cloud functions' functionality. Deployed Cloud Functions are authorised to access most other GCP services without any further authentication. This means we have access to our storage bucket off-the-bat. For local runs however, we will need an API key (steps for this are included in the project repo).
 
 ``` python
+from Flask import jsonify, abort
+from google.cloud import storage
+
+storage_client = storage.Client()
+
 def choose_image(request):
-  # Gets access to bucket using API key
-  storage_client = storage.Client()
-
-  bucket = ...  # GCP bucket name
-  # Get all image names from bucket
-  images = list(storage_client.list_blobs(bucket))
-  # Randomly choose an image
-  image = random.choice(images)
-  image_url = f'https://storage.cloud.google.com/{bucket}/{image.name}'
-
-  response = jsonify(image_url)
-  return response
+    if request.method == 'GET':
+        bucket = 'blog-image-gallery' 
+        images = list(storage_client.list_blobs(bucket))
+        image = random.choice(images)
+        image_url = f'https://storage.cloud.google.com/{bucket}/{image.name}'
+  
+        response = jsonify(image_url)
+        return response
+    else:
+        # request forbidden
+        return abort(403)
 ```
 
-I now needed to setup a publicly accessible API to be able retrieve the result of ```choose_image``` in the frontend. Time for a serverless function! From my experience, the easiest way to deploy a serverless function is using Google's Cloud Functions. When compared to AWS Lambda, Cloud functions are far quicker to set up both from the CLI and directly through the online console. GCP's console also provides far fewers configurable options than AWS, so you can setup a basic Python or Node.js API without needing to read (or understand) swathes of documentation. Since the API is doing such minimal computations, the cost incurred so far has been negligible```.
+We deploy ```choose_image``` from the command line. Talk about how an instance of the function is evaluated each time but the globals are not reloaded unless we redeploy. Workers are automatically scaled up and down based on load. https://cloud.google.com/functions/docs/bestpractices/tips
 
-We need to set up the project repo with a ```main.py``` and a ```requirements.txt```. When deployed, GCP uses gunicorn to deploy our application over a flask server.
-
-#### Local Setup
-
-
-#### GCP Setup
-
+- Write Makefiles for project
 
 #### Frontend
 
 
-#### TL;DR
-1. API key
-2. Create GCP bucket
-3. Script to push to GCP bucket, with metadata
-4. Create Cloud Function endpoint
-5. Write Cloud Function flask code, with project structure.
-6. Push code to cloud functions
-7. Track hitting the endpoint
-8. Caching proxy on client side
+#### Testing
+Unittests with Flask testing
+Integration tests between cloud functions and storage with shim
+Frontend tests with shim
 
-Any details about how to use or set up API keys, storage buckets or cloud functions can be found in the GCP documentation. I have included all project setup steps as part of the ```Makefile``` in the project repo.
+- Write tests for frontend and backend
+
+#### TL;DR
+Who says you need Instagram when you have cloud storage buckets and serverless functions :P
+
+Any details about how to use or set up API keys, storage buckets or cloud functions can be found in the GCP documentation. I have included all the steps needed to set up the project in the ```Makefile``` in the project repo.
 
 #### References
+- Efficiency for Cloud Function deployment https://cloud.google.com/functions/docs/bestpractices/tips
 - WSGI for Web Developers (Ryan Wilson-Perkin) - https://www.youtube.com/watch?v=WqrCnVAkLIo
