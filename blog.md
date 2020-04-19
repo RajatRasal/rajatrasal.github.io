@@ -2,7 +2,7 @@
 layout: default
 title: Blog
 ---
-### <span class="not-error">**Blog**</span>
+### <span class="not-error">**Tech and Progamming Blog**</span>
 
 {% for post in site.posts %}
 {% if post.type == 'blog' %}
