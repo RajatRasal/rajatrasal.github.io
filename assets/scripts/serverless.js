@@ -26,7 +26,7 @@ function PictureHolder(props) {
 }
 
 function getHomepageImage(img_holder) {
-  const url = 'https://europe-west2-my-blog-253414.cloudfunctions.net/get_image_from_bucket';
+  const url = 'https://europe-west2-my-blog-253414.cloudfunctions.net/choose_image';
   const picOfTheDayHolder = document.getElementById(img_holder);
 
   ReactDOM.render(<Loader/>, picOfTheDayHolder);
